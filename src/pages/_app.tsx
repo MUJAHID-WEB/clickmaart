@@ -1,6 +1,19 @@
-import "@/styles/globals.css";
-import type { AppProps } from "next/app";
+import { appWithTranslation } from 'next-i18next';
+import { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
+import '../styles/globals.css';
+import Layout from '../components/Layout';
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+function MyApp({ Component, pageProps }: AppProps) {
+  const { locale } = useRouter();
+  
+  return (
+    <div dir={locale === 'bn' ? 'rtl' : 'ltr'}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </div>
+  );
 }
+
+export default appWithTranslation(MyApp);

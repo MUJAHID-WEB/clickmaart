@@ -1,0 +1,88 @@
+{
+    "header": {
+      "home": "Home",
+      "products": "Products",
+      "cart": "Cart",
+      "login": "Login",
+      "register": "Register"
+    },
+    "home": {
+      "featured": "Featured Products",
+      "shop_now": "Shop Now",
+      "view_details": "View Details",
+
+      "hero": {
+        "title1": "Latest Electronics",
+        "subtitle1": "Discover our newest tech collection",
+        "title2": "Summer Collection",
+        "subtitle2": "Fresh styles for the season"
+      }
+    },
+    "categories": {
+      "electronics": "Electronics",
+      "clothing": "Clothing",
+      "home": "Home Goods",
+      "books": "Books"
+    },
+    "products": {
+      "sample_name": "Sample Product",
+      "sample_description": "High-quality product description",
+      "material": "Material",
+      "premium": "Premium",
+      "weight": "Weight"
+    },
+    "cart": {
+      "title": "Your Cart",
+      "empty": "Your cart is empty",
+      "continue_shopping": "Continue Shopping",
+      "remove": "Remove",
+      "summary": "Order Summary",
+      "total": "Total",
+      "checkout": "Proceed to Checkout"
+    },
+    "checkout": {
+      "title": "Checkout",
+      "shipping_info": "Shipping Information",
+      "full_name": "Full Name",
+      "address": "Address",
+      "city": "City",
+      "postal_code": "Postal Code",
+      "phone": "Phone Number",
+      "order_summary": "Order Summary",
+      "quantity": "Qty: {{count}}",
+      "total": "Total",
+      "place_order": "Place Order"
+    },
+    "order_confirmation": {
+      "title": "Order Confirmed!",
+      "message": "Your order has been placed successfully. Order ID:",
+      "continue_shopping": "Continue Shopping",
+      "view_order": "View Order Details"
+    },
+
+    "register": {
+      "title": "Create Account",
+      "name": "Full Name",
+      "email": "Email",
+      "password": "Password",
+      "confirm_password": "Confirm Password",
+      "submit_button": "Register",
+      "already_have_account": "Already have an account? Login",
+      "required_field": "This field is required",
+      "invalid_email": "Invalid email address",
+      "password_min_length": "Password must be at least 8 characters",
+      "passwords_mismatch": "Passwords don't match"
+    },
+    "login": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "remember_me": "Remember me",
+      "forgot_password": "Forgot password?",
+      "submit_button": "Login",
+      "no_account": "Don't have an account? Register",
+      "required_field": "This field is required",
+      "invalid_email": "Invalid email address"
+    }
+    
+  }

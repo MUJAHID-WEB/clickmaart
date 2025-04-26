@@ -1,0 +1,86 @@
+{
+    "header": {
+      "home": "হোম",
+      "products": "পণ্য",
+      "cart": "কার্ট",
+      "login": "লগইন",
+      "register": "নিবন্ধন"
+    },
+    "home": {
+      "featured": "প্রদর্শিত পণ্য",
+      "shop_now": "এখনই কিনুন",
+      "view_details": "বিস্তারিত দেখুন",
+      
+      "hero": {
+        "title1": "সর্বশেষ ইলেকট্রনিক্স",
+        "subtitle1": "আমাদের নতুন টেক সংগ্রহ আবিষ্কার করুন",
+        "title2": "গ্রীষ্মকালীন সংগ্রহ",
+        "subtitle2": "মৌসুমের জন্য নতুন স্টাইল"
+      }
+    },
+    "categories": {
+      "electronics": "ইলেকট্রনিক্স",
+      "clothing": "পোশাক",
+      "home": "গৃহ সরঞ্জাম",
+      "books": "বই"
+    },
+    "products": {
+      "sample_name": "নমুনা পণ্য",
+      "sample_description": "উচ্চ-গুণগত পণ্য বিবরণ",
+      "material": "উপাদান",
+      "premium": "প্রিমিয়াম",
+      "weight": "ওজন"
+    },
+    "cart": {
+      "title": "আপনার কার্ট",
+      "empty": "আপনার কার্ট খালি",
+      "continue_shopping": "কেনাকাটা চালিয়ে যান",
+      "remove": "অপসারণ",
+      "summary": "অর্ডার সারাংশ",
+      "total": "মোট",
+      "checkout": "চেকআউট করুন"
+    },
+    "checkout": {
+      "title": "চেকআউট",
+      "shipping_info": "শিপিং তথ্য",
+      "full_name": "পুরো নাম",
+      "address": "ঠিকানা",
+      "city": "শহর",
+      "postal_code": "পোস্টাল কোড",
+      "phone": "ফোন নম্বর",
+      "order_summary": "অর্ডার সারাংশ",
+      "quantity": "পরিমাণ: {{count}}",
+      "total": "মোট",
+      "place_order": "অর্ডার করুন"
+    },
+    "order_confirmation": {
+      "title": "অর্ডার নিশ্চিত হয়েছে!",
+      "message": "আপনার অর্ডার সফলভাবে দেওয়া হয়েছে। অর্ডার আইডি:",
+      "continue_shopping": "কেনাকাটা চালিয়ে যান",
+      "view_order": "অর্ডার বিবরণ দেখুন"
+    },
+    "register": {
+      "title": "অ্যাকাউন্ট তৈরি করুন",
+      "name": "পুরো নাম",
+      "email": "ইমেইল",
+      "password": "পাসওয়ার্ড",
+      "confirm_password": "পাসওয়ার্ড নিশ্চিত করুন",
+      "submit_button": "নিবন্ধন",
+      "already_have_account": "ইতিমধ্যে অ্যাকাউন্ট আছে? লগইন করুন",
+      "required_field": "এই ফিল্ডটি প্রয়োজন",
+      "invalid_email": "অবৈধ ইমেইল ঠিকানা",
+      "password_min_length": "পাসওয়ার্ড কমপক্ষে ৮ অক্ষর হতে হবে",
+      "passwords_mismatch": "পাসওয়ার্ড মিলছে না"
+    },
+    "login": {
+      "title": "লগইন",
+      "email": "ইমেইল",
+      "password": "পাসওয়ার্ড",
+      "remember_me": "আমাকে মনে রাখুন",
+      "forgot_password": "পাসওয়ার্ড ভুলে গেছেন?",
+      "submit_button": "লগইন",
+      "no_account": "অ্যাকাউন্ট নেই? নিবন্ধন করুন",
+      "required_field": "এই ফিল্ডটি প্রয়োজন",
+      "invalid_email": "অবৈধ ইমেইল ঠিকানা"
+    }
+  }
