@@ -3,6 +3,7 @@
       "join_us": "Join Us",
       "become_retailer": "Become a Retailer",
       "become_wholesaler": "Become a Wholesaler",
+      "home": "Home",
       "about": "About Us",
       "contact": "Contact Us",
       "stores": "Stores",
@@ -94,7 +95,7 @@
       "invalid_email": "Invalid email address"
     },
     "footer": {
-      "description": "ClickMaart is a complete package! It's time to empower your multivendor online business with powerful features!",
+      "description": "ClickMaart is a complete package! It's time to empower your online business with powerful features!",
       "support": "Support",
       "contact_us": "Contact Us",
       "copyright_text": "by ClickMaart",
