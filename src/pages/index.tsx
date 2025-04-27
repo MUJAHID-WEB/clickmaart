@@ -1,8 +1,10 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import HeroCarousel from '../components/homepage/HeroCarousel';
-import FeaturedProducts from '../components/homepage/FeaturedProducts';
-import CategoryGrid from '../components/homepage/CategoryGrid';
+
+import BecomeMember from '@/components/homepage/BecomeMember';
+import HeroCarousel from '@/components/homepage/HeroCarousel';
+import FeaturedProducts from '@/components/homepage/FeaturedProducts';
+import CategoryGrid from '@/components/homepage/CategoryGrid';
 
 const HomePage = () => {
   const { t } = useTranslation('common');
@@ -15,8 +17,10 @@ const HomePage = () => {
         <h2 className="text-2xl font-bold mb-6">{t('home.featured')}</h2>
         <FeaturedProducts />
         
-        <h2 className="text-2xl font-bold mt-12 mb-6">Categories</h2>
+        
         <CategoryGrid />
+
+        <BecomeMember />
       </div>
     </div>
   );

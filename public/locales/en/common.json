@@ -1,21 +1,27 @@
 {
     "header": {
-      "home": "Home",
-      "products": "Products",
-      "cart": "Cart",
-      "login": "Login",
-      "register": "Register"
+      "join_us": "Join Us",
+      "become_retailer": "Become a Retailer",
+      "become_wholesaler": "Become a Wholesaler",
+      "about": "About Us",
+      "contact": "Contact Us",
+      "stores": "Stores",
+      "search_placeholder": "Search products...",
+      "sign_in": "Sign In"
     },
     "home": {
       "featured": "Featured Products",
       "shop_now": "Shop Now",
+      "register_now": "Register Now",
       "view_details": "View Details",
 
       "hero": {
-        "title1": "Latest Electronics",
-        "subtitle1": "Discover our newest tech collection",
-        "title2": "Summer Collection",
-        "subtitle2": "Fresh styles for the season"
+        "title1": "Buy your dreams",
+        "subtitle1": "Discover our newest collection",
+        "title2": "The Smart Way to be a Wholesaler",
+        "subtitle2": "Our platform helps you sell more, manage inventory better, and grow your business faster",
+        "title3": "Transform Your Retail Business",
+        "subtitle3": "Discover how top sellers are increasing revenue with our platform"
       }
     },
     "categories": {
@@ -25,6 +31,9 @@
       "books": "Books"
     },
     "products": {
+      "shoes": "Premium Shoes",
+      "oil": "Organic Oil",
+      "bag": "Leather Bag",
       "sample_name": "Sample Product",
       "sample_description": "High-quality product description",
       "material": "Material",
@@ -83,6 +92,19 @@
       "no_account": "Don't have an account? Register",
       "required_field": "This field is required",
       "invalid_email": "Invalid email address"
+    },
+    "footer": {
+      "description": "ClickMaart is a complete package! It's time to empower your multivendor online business with powerful features!",
+      "support": "Support",
+      "contact_us": "Contact Us",
+      "copyright_text": "by ClickMaart",
+      "policies": {
+        "privacy_policy": "Privacy policy",
+        "terms_and_conditions": "Terms and condition",
+        "refund": "Refund Policy",
+        "shipping_policy": "Shipping Policy",
+        "cancelation": "Cancelation Policy"
+      }
     }
     
   }

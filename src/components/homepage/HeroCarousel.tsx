@@ -10,19 +10,27 @@ const HeroCarousel = () => {
   const slides = [
     {
       id: 1,
-      image: '/images/hero-1.jpg',
+      image: '/images/homepage/shopping_hero.png',
       title: t('home.hero.title1'),
       subtitle: t('home.hero.subtitle1'),
       ctaText: t('home.shop_now'),
-      link: '/products/electronics'
+      link: '/products'
     },
     {
       id: 2,
-      image: '/images/hero-2.jpg',
+      image: '/images/homepage/wholesaler_hero3.avif',
       title: t('home.hero.title2'),
       subtitle: t('home.hero.subtitle2'),
-      ctaText: t('home.shop_now'),
-      link: '/products/clothing'
+      ctaText: t('home.register_now'),
+      link: '/'
+    },
+    {
+      id: 3,
+      image: '/images/homepage/retailer_hero.jpg',
+      title: t('home.hero.title3'),
+      subtitle: t('home.hero.subtitle3'),
+      ctaText: t('home.register_now'),
+      link: '/'
     },
   ];
 
@@ -48,10 +56,10 @@ const HeroCarousel = () => {
             src={slides[currentSlide].image}
             alt={slides[currentSlide].title}
             fill
-            className="object-cover"
+            className="object-fill"
             sizes="(max-width: 768px) 100vw, 50vw"
           />
-          <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center">
+          <div className="absolute inset-0 bg-[rgba(0,0,0,0.70)] flex items-center">
             <div className="container mx-auto px-4 text-white">
               <motion.h1 
                 initial={{ y: -20 }}
