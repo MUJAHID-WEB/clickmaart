@@ -5,6 +5,8 @@ import BecomeMember from '@/components/homepage/BecomeMember';
 import HeroCarousel from '@/components/homepage/HeroCarousel';
 import FeaturedProducts from '@/components/homepage/FeaturedProducts';
 import CategoryGrid from '@/components/homepage/CategoryGrid';
+import AboutUs from '@/components/homepage/AboutUs';
+
 
 const HomePage = () => {
   const { t } = useTranslation('common');
@@ -12,16 +14,17 @@ const HomePage = () => {
   return (
     <div className="min-h-screen">
       <HeroCarousel />
+
+      <AboutUs/>
       
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto pt-8">
         <h2 className="text-2xl font-bold mb-6">{t('home.featured')}</h2>
         <FeaturedProducts />
-        
-        
-        <CategoryGrid />
-
-        <BecomeMember />
       </div>
+
+      <CategoryGrid />
+
+      <BecomeMember />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import React from "react";
 
 const BecomeMember = () => {
   return (
-    <section className="z-2 relative py-16 overflow-hidden">
+    <section className="z-2 relative py-8 md:pt-8 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">
@@ -16,7 +16,7 @@ const BecomeMember = () => {
           </div>
         </div>
 
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto">
           {/* Retailer  Card */}
           <div className="flex flex-col md:flex-row items-center mb-14">
             <div
@@ -28,8 +28,8 @@ const BecomeMember = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-l from-[rgba(26,47,37,0.54)] to-[rgba(2,211,113,0)]"></div>
             </div>
-            <div className="p-11 w-full md:w-2/5 flex">
-              <div className="flex flex-col items-start gap-3">
+            <div className="p-11 w-full md:w-2/5 flex justify-center sm:justify-start">
+              <div className="flex flex-col items-center sm:items-start gap-3">
                 <h4 className="text-xl">Become a best</h4>
                 <h3 className="font-extrabold text-2xl text-[#000] mt-1">
                   Retailer
@@ -55,8 +55,8 @@ const BecomeMember = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-[rgba(26,47,37,0.54)] to-[rgba(2,211,113,0)]"></div>
             </div>
-            <div className="p-11 w-full md:w-2/5 flex justify-end items-end">
-              <div className="flex flex-col items-end gap-3">
+            <div className="p-11 w-full md:w-2/5 flex justify-center items-end sm:justify-end">
+              <div className="flex flex-col items-center sm:items-end gap-3">
                 <h4 className="text-xl">Become a smart</h4>
                 <h3 className="font-extrabold text-2xl text-[#000] mt-1">
                   Wholesaler

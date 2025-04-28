@@ -6,6 +6,7 @@ import Image from 'next/image';
 const HeroCarousel = () => {
   const { t } = useTranslation('common');
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [direction, setDirection] = useState(1); // 1 for forward, -1 for backward
 
   const slides = [
     {
@@ -36,34 +37,62 @@ const HeroCarousel = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
+      setDirection(1);
       setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
     }, 5000);
     return () => clearInterval(interval);
   }, [slides.length]);
 
+  const goToSlide = (index: number) => {
+    setDirection(index > currentSlide ? 1 : -1);
+    setCurrentSlide(index);
+  };
+
+  const variants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? '100%' : '-100%',
+      opacity: 0
+    }),
+    center: {
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction: number) => ({
+      x: direction > 0 ? '-100%' : '100%',
+      opacity: 0
+    })
+  };
+
   return (
     <div className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden rounded-xl">
-      <AnimatePresence mode="wait">
+      <AnimatePresence custom={direction} initial={false}>
         <motion.div
           key={slides[currentSlide].id}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          custom={direction}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{
+            x: { type: 'spring', stiffness: 100, damping: 30 },
+            opacity: { duration: 0.5 }
+          }}
           className="absolute inset-0 bg-gray-100"
         >
           <Image
             src={slides[currentSlide].image}
             alt={slides[currentSlide].title}
             fill
-            className="object-fill"
+            className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"
+            priority={currentSlide === 0} // Only prioritize first image for performance
           />
           <div className="absolute inset-0 bg-[rgba(0,0,0,0.70)] flex items-center">
             <div className="container mx-auto px-4 text-white">
               <motion.h1 
                 initial={{ y: -20 }}
                 animate={{ y: 0 }}
+                transition={{ delay: 0.3 }}
                 className="text-3xl md:text-5xl font-bold mb-2"
               >
                 {slides[currentSlide].title}
@@ -71,6 +100,7 @@ const HeroCarousel = () => {
               <motion.p 
                 initial={{ y: 20 }}
                 animate={{ y: 0 }}
+                transition={{ delay: 0.4 }}
                 className="text-lg md:text-xl mb-6 max-w-lg"
               >
                 {slides[currentSlide].subtitle}
@@ -79,6 +109,9 @@ const HeroCarousel = () => {
                 href={slides[currentSlide].link}
                 className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-md font-medium transition-colors"
                 whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
               >
                 {slides[currentSlide].ctaText}
               </motion.a>
@@ -91,8 +124,8 @@ const HeroCarousel = () => {
         {slides.map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full ${currentSlide === index ? 'bg-white' : 'bg-white/50'}`}
+            onClick={() => goToSlide(index)}
+            className={`w-3 h-3 rounded-full transition-all ${currentSlide === index ? 'bg-white w-6' : 'bg-white/50'}`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}

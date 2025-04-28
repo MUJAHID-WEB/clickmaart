@@ -25,6 +25,15 @@
         "subtitle3": "Discover how top sellers are increasing revenue with our platform"
       }
     },
+    "about": {
+      "subtitle": "About",
+      "title": "We Are ClickMaart",
+      "description": "ClickMaart is Bangladesh's largest dropshipping and reselling platform. Without any kind of capital or investment, you can run an online business from home with products from numerous categories through us.",
+      "list_title": "We help you planning your journey",
+      "list_item": "Lorem Ipsum is simply dummy text",
+      "learn_more": "Learn More",
+      "review_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ncididunt ut labore et olore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ncididunt ut labore et olore magna aliqua."
+    },
     "categories": {
       "electronics": "Electronics",
       "clothing": "Clothing",
