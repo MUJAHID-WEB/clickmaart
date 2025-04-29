@@ -40,16 +40,22 @@
       "home": "Home Goods",
       "books": "Books"
     },
-    "products": {
-      "shoes": "Premium Shoes",
-      "oil": "Organic Oil",
-      "bag": "Leather Bag",
-      "sample_name": "Sample Product",
-      "sample_description": "High-quality product description",
-      "material": "Material",
-      "premium": "Premium",
-      "weight": "Weight"
-    },
+   "product": {
+    "related_products": "Related Products",
+    "shipping_details": "We offer multiple shipping options to meet your needs:",
+    "shipping_option1": "Standard Shipping: 3-5 business days",
+    "shipping_option2": "Express Shipping: 1-2 business days",
+    "shipping_option3": "International Shipping: 5-10 business days",
+    "running_shoes": "Running Shoes",
+    "casual_shoes": "Casual Sneakers",
+    "coconut_oil": "Coconut Oil",
+    "olive_oil": "Olive Oil",
+    "backpack": "Backpack",
+    "laptop_bag": "Laptop Bag"
+  },
+  "breadcrumb": {
+    "home": "Home"
+  },
     "cart": {
       "title": "Your Cart",
       "empty": "Your cart is empty",
@@ -103,6 +109,39 @@
       "required_field": "This field is required",
       "invalid_email": "Invalid email address"
     },
+   "how_it_works": {
+    "title": "How ClickMaart Works",
+    "subtitle": "Discover our simple process for retailers, wholesalers, and customers",
+    "learn_more": "Join Now",
+    "tab1": {
+      "title": "For Retailers",
+      "description": "Join our platform to expand your business and reach more customers",
+      "point1": "Easy registration process",
+      "point2": "Access to wholesale prices",
+      "point3": "Manage your inventory online"
+    },
+    "tab2": {
+      "title": "For Wholesalers",
+      "description": "Connect with retailers and grow your distribution network",
+      "point1": "Showcase your products",
+      "point2": "Manage orders efficiently",
+      "point3": "Expand your market reach"
+    },
+    "tab3": {
+      "title": "For Customers",
+      "description": "Shop from local retailers with convenience and confidence",
+      "point1": "Find products easily",
+      "point2": "Secure payment options",
+      "point3": "Fast delivery services"
+    },
+    "tab4": {
+      "title": "Delivery Process",
+      "description": "Our efficient delivery system ensures your products arrive on time",
+      "point1": "Real-time tracking",
+      "point2": "Professional delivery partners",
+      "point3": "Flexible delivery options"
+    }
+  },
     "footer": {
       "description": "ClickMaart is a complete package! It's time to empower your online business with powerful features!",
       "support": "Support",

@@ -6,6 +6,7 @@ import HeroCarousel from '@/components/homepage/HeroCarousel';
 import FeaturedProducts from '@/components/homepage/FeaturedProducts';
 import CategoryGrid from '@/components/homepage/CategoryGrid';
 import AboutUs from '@/components/homepage/AboutUs';
+import HowItWorks from '@/components/homepage/HowItWorks';
 
 
 const HomePage = () => {
@@ -25,6 +26,8 @@ const HomePage = () => {
       <CategoryGrid />
 
       <BecomeMember />
+
+      <HowItWorks />
     </div>
   );
 };

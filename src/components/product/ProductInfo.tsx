@@ -2,21 +2,10 @@ import { useState } from 'react';
 import { useCart } from '@/contexts/CartContext';
 import { StarIcon } from '@heroicons/react/24/solid';
 import Button from '@/components/common/Button';
+import { Product } from '@/types';
 
 interface ProductInfoProps {
-  product: {
-    id: string;
-    name: string;
-    price: number;
-    discount: number;
-    description: string;
-    rating: number;
-    stock: number;
-    specifications: {
-      label: string;
-      value: string;
-    }[];
-  };
+  product: Product;
 }
 
 const ProductInfo = ({ product }: ProductInfoProps) => {
@@ -30,7 +19,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
       id: product.id,
       name: product.name,
       price: discountedPrice,
-      image: `/products/${product.id}.jpg` // Adjust as needed
+      image: product.images[0] 
     });
   };
 
@@ -81,7 +70,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
         <div className="border-t border-b border-gray-200 py-4">
           <h3 className="font-medium mb-2">Specifications:</h3>
           <div className="grid grid-cols-2 gap-2">
-            {product.specifications.map((spec, i) => (
+            {product.specifications?.map((spec, i) => (
               <div key={i} className="text-sm">
                 <span className="text-gray-500">{spec.label}:</span>{' '}
                 <span className="font-medium">{spec.value}</span>

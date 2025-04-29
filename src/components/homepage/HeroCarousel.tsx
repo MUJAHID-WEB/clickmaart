@@ -11,7 +11,7 @@ const HeroCarousel = () => {
   const slides = [
     {
       id: 1,
-      image: '/images/homepage/shopping_hero.png',
+      image: '/images/homepage/shopping_hero1.webp',
       title: t('home.hero.title1'),
       subtitle: t('home.hero.subtitle1'),
       ctaText: t('home.shop_now'),
