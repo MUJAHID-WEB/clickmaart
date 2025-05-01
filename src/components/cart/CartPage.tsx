@@ -1,12 +1,26 @@
-import { useCart } from '@/contexts/CartContext';
+
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { CartItem } from '@/types';
+import { ShoppingCartIcon } from '@heroicons/react/24/outline';
+
+import { useClientCart } from "@/hooks/useClientCart";
 
 const CartPage = () => {
   const { t } = useTranslation('common');
-  const { cartItems, cartTotal, updateQuantity, removeFromCart } = useCart();
+ 
+  const { cartItems, cartTotal, updateQuantity, removeFromCart } = useClientCart();
+
+  if (cartItems.length === 0) {
+    return (
+      <div className="text-center py-12">
+        <ShoppingCartIcon className="mx-auto h-16 w-16 text-gray-400 mb-4" />
+        <p className="text-lg mb-4">Your cart is empty</p>
+        <Link href="/products">Continue Shopping</Link>
+      </div>
+    );
+  }
+
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -14,6 +28,7 @@ const CartPage = () => {
       
       {cartItems.length === 0 ? (
         <div className="text-center py-12">
+          <ShoppingCartIcon className="mx-auto h-16 w-16 text-gray-400 mb-4" />
           <p className="text-lg mb-4">{t('cart.empty')}</p>
           <Link 
             href="/products" 
@@ -28,7 +43,6 @@ const CartPage = () => {
             {cartItems.map(item => (
               <div key={item.id} className="flex items-start border-b py-4">
                 <div className="w-24 h-24 bg-gray-100 rounded mr-4 relative">
-                  {/* Product image would go here */}
                   {item.image && (
                     <Image
                       src={item.image}
@@ -46,7 +60,6 @@ const CartPage = () => {
                     <button 
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
                       className="px-3 py-1 border rounded-l"
-                      aria-label="Decrease quantity"
                     >
                       -
                     </button>
@@ -54,13 +67,12 @@ const CartPage = () => {
                     <button 
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
                       className="px-3 py-1 border rounded-r"
-                      aria-label="Increase quantity"
                     >
                       +
                     </button>
                     <button 
                       onClick={() => removeFromCart(item.id)}
-                      className="ml-4 text-red-500 hover:text-red-700" aria-label="Remove item"
+                      className="ml-4 text-red-500 hover:text-red-700"
                     >
                       {t('cart.remove')}
                     </button>
@@ -74,7 +86,7 @@ const CartPage = () => {
             <div className="border rounded-lg p-4">
               <h2 className="text-xl font-semibold mb-4">{t('cart.summary')}</h2>
               <div className="space-y-2">
-                {cartItems.map((item: CartItem) => (
+                {cartItems.map((item) => (
                   <div key={item.id} className="flex justify-between">
                     <span>
                       {item.name} × {item.quantity}
@@ -86,7 +98,7 @@ const CartPage = () => {
               <div className="border-t mt-4 pt-4">
                 <div className="flex justify-between font-semibold">
                   <span>{t('cart.total')}:</span>
-                  <span>tk. {cartTotal.toFixed(2)}</span>
+                  <span>${cartTotal.toFixed(2)}</span>
                 </div>
               </div>
               <Link

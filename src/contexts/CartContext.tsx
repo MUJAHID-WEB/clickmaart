@@ -29,6 +29,7 @@ const CartContext = createContext<CartContextType>({
 });
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
+  const [isInitialized, setIsInitialized] = useState(false);
   const [cartState, setCartState] = useState<{
     items: CartItem[];
     total: number;
@@ -43,15 +44,31 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const savedCart = localStorage.getItem("cart");
     if (savedCart) {
-      const items = JSON.parse(savedCart);
-      updateCart(items);
+      try {
+        const items = JSON.parse(savedCart);
+        if (Array.isArray(items)) {
+          setCartState({
+            items,
+            total: calculateTotal(items),
+            count: calculateCount(items),
+          });
+        }
+      } catch (error) {
+        console.error('Failed to parse cart:', error);
+        localStorage.removeItem("cart");
+      }
     }
+    setIsInitialized(true);
   }, []);
+  
 
-  // Save to localStorage when cart changes
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartState.items));
-  }, [cartState.items]);
+    console.log('Saving to localStorage:', cartState.items); 
+    if (isInitialized) {
+      localStorage.setItem("cart", JSON.stringify(cartState.items));
+    }
+  }, [cartState.items, isInitialized]);
+
 
   const calculateTotal = (items: CartItem[]) =>
     items.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -59,19 +76,20 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const calculateCount = (items: CartItem[]) =>
     items.reduce((count, item) => count + item.quantity, 0);
 
-  const updateCart = (items: CartItem[]) => {
-    setCartState({
-      items,
-      total: calculateTotal(items),
-      count: calculateCount(items),
-    });
-  };
+  // const updateCart = (items: CartItem[]) => {
+  //   setCartState({
+  //     items,
+  //     total: calculateTotal(items),
+  //     count: calculateCount(items),
+  //   });
+  // };
 
   const addToCart = (item: Omit<CartItem, "quantity">, quantity = 1) => {
+    console.log('Adding to cart:', item, quantity);
     setCartState((prev) => {
       const existingItem = prev.items.find((cartItem) => cartItem.id === item.id);
       let newItems;
-
+  
       if (existingItem) {
         newItems = prev.items.map((cartItem) =>
           cartItem.id === item.id
@@ -81,7 +99,8 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
       } else {
         newItems = [...prev.items, { ...item, quantity }];
       }
-
+  
+      console.log('New cart items:', newItems); // Debug log
       return {
         items: newItems,
         total: calculateTotal(newItems),

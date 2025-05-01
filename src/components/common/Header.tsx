@@ -16,7 +16,7 @@ const Header = () => {
   const { language, changeLanguage } = useLanguage();
   // const { cartCount } = useCart();
   const { cartCount, cartItems } = useCart();
-  console.log('Header cart count:', cartCount, 'Items:', cartItems);
+  console.log("Header cart count:", cartCount, "Items:", cartItems);
 
   const [showLangDropdown, setShowLangDropdown] = useState(false);
   const [showJoinDropdown, setShowJoinDropdown] = useState(false);
@@ -208,7 +208,16 @@ const Header = () => {
             </div>
 
             {/* Cart */}
-            <Link href="/cart" className="relative p-1 hover:text-indigo-600">
+            <Link
+              href="/cart"
+              className="relative p-1 hover:text-indigo-600"
+              onClick={(e) => {
+                if (cartCount === 0) {
+                  e.preventDefault();
+                  
+                }
+              }}
+            >
               <ShoppingCartIcon className="h-6 w-6" />
 
               {cartCount > 0 && (
