@@ -6,7 +6,7 @@ import ProductGallery from '@/components/product/ProductGallery';
 import ProductInfo from '@/components/product/ProductInfo';
 import RelatedProducts from '@/components/product/RelatedProducts';
 import CustomerReviews from '@/components/product/CustomerReviews';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticPropsContext } from 'next';
 import { Product, Review } from '@/types';
 
 
@@ -303,7 +303,7 @@ const ProductDetailPage = ({ product, productReviews }: { product: Product; prod
       </div>
 
       {/* Product Details Tabs */}
-      <div className="tabs mb-8">
+      <div className="tabs mb-8 mr-4">
         <button 
           className={`tab tab-bordered ${activeTab === 'details' ? 'tab-active' : ''}`}
           onClick={() => setActiveTab('details')}
@@ -343,29 +343,42 @@ const ProductDetailPage = ({ product, productReviews }: { product: Product; prod
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
+
+export const getStaticProps = async (context: GetStaticPropsContext) => {
+  const { params, locale } = context;
   const product = products.find(p => p.id === params?.id);
   const productReviews = product ? reviews[product.id] || [] : [];
+
+  if (!product) {
+    return {
+      notFound: true,
+    };
+  }
   
+
   return {
     props: {
       product,
       productReviews,
       ...(await serverSideTranslations(locale || 'en', ['common'])),
     },
-    revalidate: 60
+    revalidate: 60, 
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = products.map(product => ({
-    params: { id: product.id }
-  }));
+
+
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
+  const paths = products.flatMap(product => 
+    (locales || []).map(locale => ({
+      params: { id: product.id },
+      locale,
+    }))
+  );
 
   return {
     paths,
-    fallback: true
+    fallback: 'blocking', 
   };
 };
-
 export default ProductDetailPage;

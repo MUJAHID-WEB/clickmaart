@@ -1,6 +1,7 @@
-import { useState } from 'react';
+'use client';
+
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 interface ProductGalleryProps {
   images: string[];
@@ -9,27 +10,51 @@ interface ProductGalleryProps {
 const ProductGallery = ({ images }: ProductGalleryProps) => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
-  const [showZoom, setShowZoom] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+
+  // Update container dimensions on resize
+  useEffect(() => {
+    const updateSize = () => {
+      if (containerRef.current) {
+        const { width, height } = containerRef.current.getBoundingClientRect();
+        setContainerSize({ width, height });
+      }
+    };
+
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
-    const x = ((e.pageX - left) / width) * 100;
-    const y = ((e.pageY - top) / height) * 100;
-    setZoomPosition({ x, y });
+    if (!containerRef.current) return;
+
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    setZoomPosition({
+      x: Math.max(0, Math.min(x, rect.width)),
+      y: Math.max(0, Math.min(y, rect.height)),
+    });
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-4">
+    <div className="flex flex-col md:flex-row gap-4 relative">
       {/* Thumbnails */}
       <div className="flex md:flex-col gap-2 order-2 md:order-1">
-        {images.map((img, index) => (
+        {images.map((image, index) => (
           <button
             key={index}
             onClick={() => setSelectedImage(index)}
-            className={`w-16 h-16 relative border rounded overflow-hidden ${selectedImage === index ? 'border-indigo-500' : 'border-gray-200'}`}
+            className={`w-16 h-16 relative border rounded overflow-hidden transition-colors ${
+              selectedImage === index ? 'border-indigo-500' : 'border-gray-200'
+            }`}
           >
             <Image
-              src={img}
+              src={image}
               alt={`Thumbnail ${index + 1}`}
               fill
               className="object-cover"
@@ -39,12 +64,13 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
         ))}
       </div>
 
-      {/* Main Image */}
-      <div 
+      {/* Main Image Container */}
+      <div
+        ref={containerRef}
         className="relative aspect-square flex-1 order-1 md:order-2 bg-gray-100 rounded-lg overflow-hidden"
         onMouseMove={handleMouseMove}
-        onMouseEnter={() => setShowZoom(true)}
-        onMouseLeave={() => setShowZoom(false)}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
       >
         <Image
           src={images[selectedImage]}
@@ -54,33 +80,33 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
           sizes="(max-width: 768px) 100vw, 50vw"
         />
 
-        {/* Zoom Indicator */}
-        {showZoom && (
-          <div className="absolute inset-0 pointer-events-none">
-            <div 
-              className="absolute w-32 h-32 bg-white bg-opacity-30 border border-white rounded-full"
-              style={{
-                left: `${zoomPosition.x}%`,
-                top: `${zoomPosition.y}%`,
-                transform: 'translate(-50%, -50%)'
-              }}
-            />
-            <MagnifyingGlassIcon className="absolute w-6 h-6 text-white top-2 right-2" />
-          </div>
+        {/* Zoom Lens */}
+        {isHovering && (
+          <div
+            className="absolute pointer-events-none border-2 border-white rounded-full mix-blend-difference"
+            style={{
+              width: '150px',
+              height: '150px',
+              left: `${zoomPosition.x}px`,
+              top: `${zoomPosition.y}px`,
+              transform: 'translate(-50%, -50%)',
+              backgroundColor: 'rgba(255, 255, 255, 0.3)',
+              zIndex: 10,
+            }}
+          />
         )}
 
         {/* Zoom Preview */}
-        {showZoom && (
-          <div className="hidden lg:block absolute left-full top-0 ml-4 w-96 h-96 bg-white border rounded-lg overflow-hidden z-10">
-            <div 
-              className="w-full h-full bg-no-repeat"
-              style={{
-                backgroundImage: `url(${images[selectedImage]})`,
-                backgroundPosition: `${zoomPosition.x}% ${zoomPosition.y}%`,
-                backgroundSize: '200%'
-              }}
-            />
-          </div>
+        {isHovering && containerSize.width > 0 && (
+          <div
+            className="hidden lg:block absolute left-full top-0 ml-4 w-96 h-96 bg-white border rounded-lg overflow-hidden z-20 shadow-lg"
+            style={{
+              backgroundImage: `url(${images[selectedImage]})`,
+              backgroundPosition: `-${zoomPosition.x * 2 - 192}px -${zoomPosition.y * 2 - 192}px`,
+              backgroundSize: `${containerSize.width * 2}px ${containerSize.height * 2}px`,
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
         )}
       </div>
     </div>

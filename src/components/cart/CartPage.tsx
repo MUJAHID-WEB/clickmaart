@@ -1,6 +1,8 @@
 import { useCart } from '@/contexts/CartContext';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
+import Image from 'next/image';
+import { CartItem } from '@/types';
 
 const CartPage = () => {
   const { t } = useTranslation('common');
@@ -25,8 +27,17 @@ const CartPage = () => {
           <div>
             {cartItems.map(item => (
               <div key={item.id} className="flex items-start border-b py-4">
-                <div className="w-24 h-24 bg-gray-100 rounded mr-4">
+                <div className="w-24 h-24 bg-gray-100 rounded mr-4 relative">
                   {/* Product image would go here */}
+                  {item.image && (
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      fill
+                      className="object-cover"
+                      sizes="96px"
+                    />
+                  )}
                 </div>
                 <div className="flex-1">
                   <h3 className="font-medium">{item.name}</h3>
@@ -35,6 +46,7 @@ const CartPage = () => {
                     <button 
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
                       className="px-3 py-1 border rounded-l"
+                      aria-label="Decrease quantity"
                     >
                       -
                     </button>
@@ -42,12 +54,13 @@ const CartPage = () => {
                     <button 
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
                       className="px-3 py-1 border rounded-r"
+                      aria-label="Increase quantity"
                     >
                       +
                     </button>
                     <button 
                       onClick={() => removeFromCart(item.id)}
-                      className="ml-4 text-red-500 hover:text-red-700"
+                      className="ml-4 text-red-500 hover:text-red-700" aria-label="Remove item"
                     >
                       {t('cart.remove')}
                     </button>
@@ -61,7 +74,7 @@ const CartPage = () => {
             <div className="border rounded-lg p-4">
               <h2 className="text-xl font-semibold mb-4">{t('cart.summary')}</h2>
               <div className="space-y-2">
-                {cartItems.map(item => (
+                {cartItems.map((item: CartItem) => (
                   <div key={item.id} className="flex justify-between">
                     <span>
                       {item.name} × {item.quantity}
@@ -73,7 +86,7 @@ const CartPage = () => {
               <div className="border-t mt-4 pt-4">
                 <div className="flex justify-between font-semibold">
                   <span>{t('cart.total')}:</span>
-                  <span>${cartTotal.toFixed(2)}</span>
+                  <span>tk. {cartTotal.toFixed(2)}</span>
                 </div>
               </div>
               <Link

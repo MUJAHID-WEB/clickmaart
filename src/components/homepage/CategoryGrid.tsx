@@ -9,25 +9,25 @@ const CategoryGrid = () => {
     {
       id: "electronics",
       name: t("categories.electronics"),
-      image: "/images/category/electronics.jpg",
+      image: "/",
       count: 125,
     },
     {
       id: "clothing",
       name: t("categories.clothing"),
-      image: "/images/category/clothing.jpg",
+      image: "/",
       count: 89,
     },
     {
       id: "home",
       name: t("categories.home"),
-      image: "/images/category/home.jpg",
+      image: "/",
       count: 64,
     },
     {
       id: "books",
       name: t("categories.books"),
-      image: "/images/category/books.jpg",
+      image: "/",
       count: 42,
     },
   ];

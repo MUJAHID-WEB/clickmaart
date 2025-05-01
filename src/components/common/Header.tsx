@@ -1,23 +1,27 @@
-import { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
-import { useTranslation } from 'next-i18next';
-import { useLanguage } from '../../contexts/LanguageContext';
-import { useCart } from '../../contexts/CartContext';
-import { 
-  ChevronDownIcon, 
-  MagnifyingGlassIcon as SearchIcon, 
+import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
+import { useTranslation } from "next-i18next";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { useCart } from "../../contexts/CartContext";
+import {
+  ChevronDownIcon,
+  MagnifyingGlassIcon as SearchIcon,
   ShoppingCartIcon,
-  UserIcon 
-} from '@heroicons/react/24/outline';
+  UserIcon,
+} from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
 
 const Header = () => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
   const { language, changeLanguage } = useLanguage();
-  const { cartItems } = useCart();
+  // const { cartCount } = useCart();
+  const { cartCount, cartItems } = useCart();
+  console.log('Header cart count:', cartCount, 'Items:', cartItems);
+
   const [showLangDropdown, setShowLangDropdown] = useState(false);
   const [showJoinDropdown, setShowJoinDropdown] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const searchRef = useRef<HTMLInputElement>(null);
   const langDropdownRef = useRef<HTMLDivElement>(null);
   const joinDropdownRef = useRef<HTMLDivElement>(null);
@@ -25,16 +29,22 @@ const Header = () => {
   // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (langDropdownRef.current && !langDropdownRef.current.contains(event.target as Node)) {
+      if (
+        langDropdownRef.current &&
+        !langDropdownRef.current.contains(event.target as Node)
+      ) {
         setShowLangDropdown(false);
       }
-      if (joinDropdownRef.current && !joinDropdownRef.current.contains(event.target as Node)) {
+      if (
+        joinDropdownRef.current &&
+        !joinDropdownRef.current.contains(event.target as Node)
+      ) {
         setShowJoinDropdown(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   // Focus search input when shown
@@ -47,9 +57,9 @@ const Header = () => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     // Implement search functionality
-    console.log('Searching for:', searchQuery);
+    console.log("Searching for:", searchQuery);
     setShowSearch(false);
-    setSearchQuery('');
+    setSearchQuery("");
   };
 
   return (
@@ -59,31 +69,39 @@ const Header = () => {
         <div className="container mx-auto px-4 flex justify-end items-center space-x-8">
           {/* Language Selector */}
           <div className="relative" ref={langDropdownRef}>
-            <button 
+            <button
               onClick={() => setShowLangDropdown(!showLangDropdown)}
               className="flex items-center text-sm hover:text-indigo-600"
             >
-              {language === 'en' ? 'English' : 'বাংলা'}
+              {language === "en" ? "English" : "বাংলা"}
               <ChevronDownIcon className="ml-1 h-4 w-4" />
             </button>
-            
+
             {showLangDropdown && (
               <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-10">
                 <button
                   onClick={() => {
-                    changeLanguage('en');
+                    changeLanguage("en");
                     setShowLangDropdown(false);
                   }}
-                  className={`block w-full text-left px-4 py-2 text-sm ${language === 'en' ? 'bg-indigo-100 text-indigo-700' : 'hover:bg-gray-100'}`}
+                  className={`block w-full text-left px-4 py-2 text-sm ${
+                    language === "en"
+                      ? "bg-indigo-100 text-indigo-700"
+                      : "hover:bg-gray-100"
+                  }`}
                 >
                   English
                 </button>
                 <button
                   onClick={() => {
-                    changeLanguage('bn');
+                    changeLanguage("bn");
                     setShowLangDropdown(false);
                   }}
-                  className={`block w-full text-left px-4 py-2 text-sm ${language === 'bn' ? 'bg-indigo-100 text-indigo-700' : 'hover:bg-gray-100'}`}
+                  className={`block w-full text-left px-4 py-2 text-sm ${
+                    language === "bn"
+                      ? "bg-indigo-100 text-indigo-700"
+                      : "hover:bg-gray-100"
+                  }`}
                 >
                   বাংলা
                 </button>
@@ -93,14 +111,14 @@ const Header = () => {
 
           {/* Join Us Dropdown */}
           <div className="relative" ref={joinDropdownRef}>
-            <button 
+            <button
               onClick={() => setShowJoinDropdown(!showJoinDropdown)}
               className="flex items-center text-sm hover:text-indigo-600"
             >
-              {t('header.join_us')}
+              {t("header.join_us")}
               <ChevronDownIcon className="ml-1 h-4 w-4" />
             </button>
-            
+
             {showJoinDropdown && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
                 <Link
@@ -108,14 +126,14 @@ const Header = () => {
                   className="block px-4 py-2 text-sm hover:bg-gray-100"
                   onClick={() => setShowJoinDropdown(false)}
                 >
-                  {t('header.become_retailer')}
+                  {t("header.become_retailer")}
                 </Link>
                 <Link
                   href="/register/wholesaler"
                   className="block px-4 py-2 text-sm hover:bg-gray-100"
                   onClick={() => setShowJoinDropdown(false)}
                 >
-                  {t('header.become_wholesaler')}
+                  {t("header.become_wholesaler")}
                 </Link>
               </div>
             )}
@@ -131,19 +149,25 @@ const Header = () => {
             <Link href="/" className="text-2xl font-bold text-indigo-600">
               Click Maart
             </Link>
-            
+
             <nav className="hidden md:flex items-center space-x-6">
               <Link href="/" className="hover:text-indigo-600 font-medium">
-                {t('header.home')}
+                {t("header.home")}
               </Link>
               <Link href="/about" className="hover:text-indigo-600 font-medium">
-                {t('header.about')}
+                {t("header.about")}
               </Link>
-              <Link href="/contact" className="hover:text-indigo-600 font-medium">
-                {t('header.contact')}
+              <Link
+                href="/contact"
+                className="hover:text-indigo-600 font-medium"
+              >
+                {t("header.contact")}
               </Link>
-              <Link href="/stores" className="hover:text-indigo-600 font-medium">
-                {t('header.stores')}
+              <Link
+                href="/stores"
+                className="hover:text-indigo-600 font-medium"
+              >
+                {t("header.stores")}
               </Link>
             </nav>
           </div>
@@ -153,17 +177,20 @@ const Header = () => {
             {/* Search */}
             <div className="relative">
               {showSearch ? (
-                <form onSubmit={handleSearch} className="absolute right-0 top-0 bg-white p-1 shadow-md rounded">
+                <form
+                  onSubmit={handleSearch}
+                  className="absolute right-0 top-0 bg-white p-1 shadow-md rounded"
+                >
                   <input
                     ref={searchRef}
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder={t('header.search_placeholder')}
+                    placeholder={t("header.search_placeholder")}
                     className="border rounded px-3 py-1 w-64 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                   />
-                  <button 
-                    type="button" 
+                  <button
+                    type="button"
                     onClick={() => setShowSearch(false)}
                     className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
                   >
@@ -171,7 +198,7 @@ const Header = () => {
                   </button>
                 </form>
               ) : (
-                <button 
+                <button
                   onClick={() => setShowSearch(true)}
                   className="p-1 hover:text-indigo-600"
                 >
@@ -183,20 +210,26 @@ const Header = () => {
             {/* Cart */}
             <Link href="/cart" className="relative p-1 hover:text-indigo-600">
               <ShoppingCartIcon className="h-6 w-6" />
-              {cartItems.length > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  {cartItems.length}
-                </span>
+
+              {cartCount > 0 && (
+                <motion.span
+                  key={cartCount}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"
+                >
+                  {cartCount}
+                </motion.span>
               )}
             </Link>
 
             {/* Sign In */}
-            <Link 
-              href="/login" 
+            <Link
+              href="/login"
               className="flex items-center space-x-1 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md transition-colors"
             >
               <UserIcon className="h-5 w-5" />
-              <span>{t('header.sign_in')}</span>
+              <span>{t("header.sign_in")}</span>
             </Link>
           </div>
         </div>

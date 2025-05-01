@@ -3,25 +3,49 @@ import { useCart } from '@/contexts/CartContext';
 import { StarIcon } from '@heroicons/react/24/solid';
 import Button from '@/components/common/Button';
 import { Product } from '@/types';
+import { toast } from 'react-toastify';
 
 interface ProductInfoProps {
   product: Product;
 }
 
 const ProductInfo = ({ product }: ProductInfoProps) => {
-  const { addToCart } = useCart();
+  const { addToCart} = useCart();
   const [quantity, setQuantity] = useState(1);
 
   const discountedPrice = product.price * (1 - product.discount / 100);
 
-  const handleAddToCart = () => {
+  
+
+const handleAddToCart = () => {
+  try {
+    if (!product.id || !product.name || !product.images?.[0]) {
+      throw new Error('Invalid product data');
+    }
+
+    console.log('Attempting to add to cart:', {
+      id: product.id,
+      name: product.name,
+      price: discountedPrice,
+      image: product.images[0],
+      quantity
+    });
+
     addToCart({
       id: product.id,
       name: product.name,
       price: discountedPrice,
       image: product.images[0] 
-    });
-  };
+    }, quantity);
+
+    toast.success(`${quantity} ${product.name} added to cart!`);
+    console.log('Add to cart successful'); 
+  } catch (error) {
+    console.error('Add to cart error:', error);
+    toast.error('Failed to add item to cart');
+  }
+};
+
 
   return (
     <div className="space-y-6">
@@ -83,14 +107,14 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
           <div className="flex items-center border rounded">
             <button 
               onClick={() => setQuantity(q => Math.max(1, q - 1))}
-              className="px-3 py-2 text-gray-600 hover:bg-gray-100"
+              className="px-3 py-2 text-gray-600 hover:bg-gray-100"  type="button"
             >
               -
             </button>
             <span className="px-4 py-2">{quantity}</span>
             <button 
               onClick={() => setQuantity(q => q + 1)}
-              className="px-3 py-2 text-gray-600 hover:bg-gray-100"
+              className="px-3 py-2 text-gray-600 hover:bg-gray-100"  type="button"
             >
               +
             </button>
@@ -99,6 +123,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
           <Button 
             onClick={handleAddToCart}
             className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white"
+            type="button" 
           >
             Add to Cart
           </Button>

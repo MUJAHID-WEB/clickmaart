@@ -1,10 +1,11 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import BecomeMember from '@/components/homepage/BecomeMember';
+
 import HeroCarousel from '@/components/homepage/HeroCarousel';
 import FeaturedProducts from '@/components/homepage/FeaturedProducts';
 import CategoryGrid from '@/components/homepage/CategoryGrid';
+import BecomeMember from '@/components/homepage/BecomeMember';
 import AboutUs from '@/components/homepage/AboutUs';
 import HowItWorks from '@/components/homepage/HowItWorks';
 

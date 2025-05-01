@@ -5,7 +5,6 @@ import Link from 'next/link';
 const RelatedProducts = ({ category, currentProductId }: { category: string; currentProductId?: string }) => {
   const { t } = useTranslation('common');
   
-  // Complete product data including all required properties
   const relatedProducts = [
      // Shoes category
   {
@@ -31,7 +30,7 @@ const RelatedProducts = ({ category, currentProductId }: { category: string; cur
     name: 'Running Shoes',
     price: 129.99,
     discount: 10,
-    images: ['/images/homepage/Product4.jpg'],
+    images: ['/images/homepage/Product1.jpg'],
     rating: 4.3,
     category: 'shoes',
     description: 'Lightweight running shoes for athletes',
@@ -47,7 +46,7 @@ const RelatedProducts = ({ category, currentProductId }: { category: string; cur
     name: 'Casual Sneakers',
     price: 79.99,
     discount: 0,
-    images: ['/images/homepage/Product5.jpg'],
+    images: ['/images/homepage/Product1.jpg'],
     rating: 4.1,
     category: 'shoes',
     description: 'Everyday comfortable sneakers',
@@ -81,7 +80,7 @@ const RelatedProducts = ({ category, currentProductId }: { category: string; cur
     name: 'Coconut Oil',
     price: 19.99,
     discount: 5,
-    images: ['/images/homepage/Product6.jpg'],
+    images: ['/images/homepage/Product2.jpg'],
     rating: 4.4,
     category: 'oil',
     description: 'Virgin coconut oil for cooking and skincare',
@@ -97,7 +96,7 @@ const RelatedProducts = ({ category, currentProductId }: { category: string; cur
     name: 'Olive Oil',
     price: 29.99,
     discount: 15,
-    images: ['/images/homepage/Product7.jpg'],
+    images: ['/images/homepage/Product2.jpg'],
     rating: 4.6,
     category: 'oil',
     description: 'Extra virgin olive oil',
@@ -131,7 +130,7 @@ const RelatedProducts = ({ category, currentProductId }: { category: string; cur
     name: 'Backpack',
     price: 49.99,
     discount: 10,
-    images: ['/images/homepage/Product8.jpg'],
+    images: ['/images/homepage/Product3.jpg'],
     rating: 4.2,
     category: 'bags',
     description: 'Durable backpack for everyday use',
@@ -147,7 +146,7 @@ const RelatedProducts = ({ category, currentProductId }: { category: string; cur
     name: 'Laptop Bag',
     price: 59.99,
     discount: 0,
-    images: ['/images/homepage/Product9.jpg'],
+    images: ['/images/homepage/Product3.jpg'],
     rating: 4.3,
     category: 'bags',
     description: 'Professional laptop bag with padding',

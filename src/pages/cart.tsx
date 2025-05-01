@@ -1,8 +1,8 @@
 import CartPage from '@/components/cart/CartPage';
-import { NextPage } from 'next';
 
 
-const Cart: NextPage = () => {
+
+const Cart = () => {
   return <CartPage />;
 };
 

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from "react";
 
 type CartItem = {
   id: string;
@@ -10,11 +10,12 @@ type CartItem = {
 
 type CartContextType = {
   cartItems: CartItem[];
-  addToCart: (item: Omit<CartItem, 'quantity'>) => void;
+  addToCart: (item: Omit<CartItem, "quantity">, quantity?: number) => void;
   removeFromCart: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
   cartTotal: number;
+  cartCount: number;
 };
 
 const CartContext = createContext<CartContextType>({
@@ -24,38 +25,80 @@ const CartContext = createContext<CartContextType>({
   updateQuantity: () => {},
   clearCart: () => {},
   cartTotal: 0,
+  cartCount: 0,
 });
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartState, setCartState] = useState<{
+    items: CartItem[];
+    total: number;
+    count: number;
+  }>({
+    items: [],
+    total: 0,
+    count: 0,
+  });
 
+  // Initialize cart from localStorage
   useEffect(() => {
-    const savedCart = localStorage.getItem('cart');
+    const savedCart = localStorage.getItem("cart");
     if (savedCart) {
-      setCartItems(JSON.parse(savedCart));
+      const items = JSON.parse(savedCart);
+      updateCart(items);
     }
   }, []);
 
+  // Save to localStorage when cart changes
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cartItems));
-  }, [cartItems]);
+    localStorage.setItem("cart", JSON.stringify(cartState.items));
+  }, [cartState.items]);
 
-  const addToCart = (item: Omit<CartItem, 'quantity'>) => {
-    setCartItems(prevItems => {
-      const existingItem = prevItems.find(cartItem => cartItem.id === item.id);
+  const calculateTotal = (items: CartItem[]) =>
+    items.reduce((total, item) => total + item.price * item.quantity, 0);
+
+  const calculateCount = (items: CartItem[]) =>
+    items.reduce((count, item) => count + item.quantity, 0);
+
+  const updateCart = (items: CartItem[]) => {
+    setCartState({
+      items,
+      total: calculateTotal(items),
+      count: calculateCount(items),
+    });
+  };
+
+  const addToCart = (item: Omit<CartItem, "quantity">, quantity = 1) => {
+    setCartState((prev) => {
+      const existingItem = prev.items.find((cartItem) => cartItem.id === item.id);
+      let newItems;
+
       if (existingItem) {
-        return prevItems.map(cartItem =>
+        newItems = prev.items.map((cartItem) =>
           cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            ? { ...cartItem, quantity: cartItem.quantity + quantity }
             : cartItem
         );
+      } else {
+        newItems = [...prev.items, { ...item, quantity }];
       }
-      return [...prevItems, { ...item, quantity: 1 }];
+
+      return {
+        items: newItems,
+        total: calculateTotal(newItems),
+        count: calculateCount(newItems),
+      };
     });
   };
 
   const removeFromCart = (id: string) => {
-    setCartItems(prevItems => prevItems.filter(item => item.id !== id));
+    setCartState((prev) => {
+      const newItems = prev.items.filter((item) => item.id !== id);
+      return {
+        items: newItems,
+        total: calculateTotal(newItems),
+        count: calculateCount(newItems),
+      };
+    });
   };
 
   const updateQuantity = (id: string, quantity: number) => {
@@ -63,29 +106,36 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
       removeFromCart(id);
       return;
     }
-    setCartItems(prevItems =>
-      prevItems.map(item => (item.id === id ? { ...item, quantity } : item))
-    );
+    setCartState((prev) => {
+      const newItems = prev.items.map((item) =>
+        item.id === id ? { ...item, quantity } : item
+      );
+      return {
+        items: newItems,
+        total: calculateTotal(newItems),
+        count: calculateCount(newItems),
+      };
+    });
   };
 
   const clearCart = () => {
-    setCartItems([]);
+    setCartState({
+      items: [],
+      total: 0,
+      count: 0,
+    });
   };
-
-  const cartTotal = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
 
   return (
     <CartContext.Provider
       value={{
-        cartItems,
+        cartItems: cartState.items,
+        cartTotal: cartState.total,
+        cartCount: cartState.count,
         addToCart,
         removeFromCart,
         updateQuantity,
         clearCart,
-        cartTotal,
       }}
     >
       {children}
