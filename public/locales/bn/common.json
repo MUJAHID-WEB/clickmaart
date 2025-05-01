@@ -39,33 +39,144 @@
         "reviewer2": "Mujahid",
         "review_address2": "Chittagong, Bangladesh"
       },
-      "products": {
-        "shoes": "প্রিমিয়াম জুতো",
-        "shoes_description": "দৈনন্দিন ব্যবহারের জন্য আড়ম্বরপূর্ণ এবং আরামদায়ক জুতো।",
-        "shoes_price": "২৯৯.৯৯",
-        "shoes_rating": "৪.৫",
-        "shoes_stock": "১০",
-  
-        "oil": "অরগানিক সরিষার তেল",
-        "oil_description": "রান্না এবং ত্বকের যত্নের জন্য খাঁটি ও প্রাকৃতিক সরিষার তেল।",
-        "oil_price": "২৪.৯৯",
-        "oil_rating": "৪.২",
-        "oil_stock": "২৫",
-  
-        "bag": "চামড়ার ল্যাপটপ ব্যাগ",
-        "bag_description": "পেশাদারদের জন্য টেকসই এবং আড়ম্বরপূর্ণ চামড়ার ব্যাগ।",
-        "bag_price": "৮৯.৯৯",
-        "bag_rating": "৪.৭",
-        "bag_stock": "৭"
-      },
-      "product": {
-        "category": "বৈশিষ্ট্যযুক্ত",
-        "material": "উপাদান",
-        "material_value": "চামড়া",
-        "size": "আকার",
-        "size_value": "মধ্যম"
-      }
+    "products": {
+      "shoes": "প্রিমিয়াম জুতো",
+      "shoes_description": "দৈনন্দিন ব্যবহারের জন্য আড়ম্বরপূর্ণ এবং আরামদায়ক জুতো।",
+      "shoes_price": "২৯৯.৯৯",
+      "shoes_rating": "৪.৫",
+      "shoes_stock": "১০",
+      "shoes_details": "এই প্রিমিয়াম জুতোগুলো সর্বোচ্চ মানের উপকরণ দিয়ে তৈরি যা স্টাইল এবং আরাম উভয়ই প্রদান করে। কুশনযুক্ত ইনসোল এবং শ্বাস-প্রশ্বাসের উপযোগী আস্তরণ সারাদিনের আরাম নিশ্চিত করে।",
+      
+      "oil": "অরগানিক সরিষার তেল",
+      "oil_description": "রান্না এবং ত্বকের যত্নের জন্য খাঁটি ও প্রাকৃতিক সরিষার তেল।",
+      "oil_price": "২৪.৯৯",
+      "oil_rating": "৪.২",
+      "oil_stock": "২৫",
+      "oil_details": "প্রিমিয়াম মানের সরিষার বীজ থেকে কোল্ড-প্রেস করা, কোনো সংযোজন বা প্রিজারভেটিভ ছাড়াই। রান্না এবং ঐতিহ্যবাহী ত্বক যত্নের রুটিন উভয়ের জন্য আদর্শ।",
+      
+      "bag": "চামড়ার ল্যাপটপ ব্যাগ",
+      "bag_description": "পেশাদারদের জন্য টেকসই এবং আড়ম্বরপূর্ণ চামড়ার ব্যাগ।",
+      "bag_price": "৮৯.৯৯",
+      "bag_rating": "৪.৭",
+      "bag_stock": "৭",
+      "bag_details": "আসল চামড়া দিয়ে হাতে তৈরি, এই ল্যাপটপ ব্যাগে আপনার ল্যাপটপ, ডকুমেন্টস এবং আনুষাঙ্গিকের জন্য একাধিক কম্পার্টমেন্ট রয়েছে। প্যাডেড স্ট্র্যাপ আরামদায়ক বহন নিশ্চিত করে।",
+      
+      "running_shoes": "দৌড়ের জুতো",
+      "running_shoes_description": "ক্রীড়াবিদদের জন্য হালকা ওজনের দৌড়ের জুতো।",
+      "running_shoes_price": "১২৯.৯৯",
+      "running_shoes_rating": "৪.৩",
+      "running_shoes_stock": "১৫",
+      "running_shoes_details": "যে দৌড়বিদদের প্রতিক্রিয়াশীল কুশনিং এবং শ্বাস-প্রশ্বাসের প্রয়োজন তাদের জন্য ডিজাইন করা হয়েছে। নমনীয় সোল বিভিন্ন পৃষ্ঠতলে চমৎকার ট্র্যাকশন প্রদান করে।",
+      
+      "casual_shoes": "ক্যাজুয়াল স্নিকার্স",
+      "casual_shoes_description": "দৈনন্দিন ব্যবহারের জন্য আরামদায়ক স্নিকার্স।",
+      "casual_shoes_price": "৭৯.৯৯",
+      "casual_shoes_rating": "৪.১",
+      "casual_shoes_stock": "২০",
+      "casual_shoes_details": "কুশনযুক্ত ফুটবেড এবং নমনীয় সোল সহ দৈনন্দিন ব্যবহারের জন্য আদর্শ। ক্লাসিক ডিজাইন যেকোনো ক্যাজুয়াল পোশাকের সাথে মানানসই।",
+      
+      "coconut_oil": "নারকেল তেল",
+      "coconut_oil_description": "রান্না এবং ত্বকের যত্নের জন্য ভার্জিন নারকেল তেল।",
+      "coconut_oil_price": "১৯.৯৯",
+      "coconut_oil_rating": "৪.৪",
+      "coconut_oil_stock": "১৮",
+      "coconut_oil_details": "রাসায়নিক প্রক্রিয়াবিহীন তাজা নারকেল থেকে নিষ্কাশিত। পুষ্টিতে সমৃদ্ধ এবং রান্না ও সৌন্দর্য চর্চা উভয়ের জন্য উপযুক্ত।",
+      
+      "olive_oil": "অলিভ অয়েল",
+      "olive_oil_description": "এক্সট্রা ভার্জিন অলিভ অয়েল।",
+      "olive_oil_price": "২৯.৯৯",
+      "olive_oil_rating": "৪.৬",
+      "olive_oil_stock": "১২",
+      "olive_oil_details": "মধ্যবর্তী অঞ্চল থেকে আমদানিকৃত, সমৃদ্ধ স্বাদ এবং উচ্চ পুষ্টিগুণ সম্পন্ন। সালাদ, রান্না এবং ড্রেসিংয়ের জন্য আদর্শ।",
+      
+      "backpack": "ব্যাকপ্যাক",
+      "backpack_description": "দৈনন্দিন ব্যবহারের জন্য টেকসই ব্যাকপ্যাক।",
+      "backpack_price": "৪৯.৯৯",
+      "backpack_rating": "৪.২",
+      "backpack_stock": "২২",
+      "backpack_details": "জলরোধী উপাদান এবং আরামের জন্য প্যাডযুক্ত স্ট্র্যাপ। একাধিক কম্পার্টমেন্ট আপনার জিনিসপত্র সুসংগঠিতভাবে রাখতে সাহায্য করে।",
+      
+      "laptop_bag": "ল্যাপটপ ব্যাগ",
+      "laptop_bag_description": "প্যাডিং সহ পেশাদার ল্যাপটপ ব্যাগ।",
+      "laptop_bag_price": "৫৯.৯৯",
+      "laptop_bag_rating": "৪.৩",
+      "laptop_bag_stock": "১৪",
+      "laptop_bag_details": "কুশনযুক্ত কম্পার্টমেন্ট দিয়ে আপনার ল্যাপটপ সুরক্ষিত রাখে। আনুষাঙ্গিকের জন্য আলাদা পকেট সহ ব্যবসায়িক পেশাদারদের জন্য উপযুক্ত মসৃণ ডিজাইন।",
+
+      "shoes_material_value": "প্রিমিয়াম চামড়া",
+      "shoes_size_value": "US ৭-১২",
+      "shoes_type_value": "ক্যাজুয়াল",
+
+
+      "oil_type_value": "অর্গানিক সরিষার তেল",
+      "oil_volume_value": "৫০০ মিলি",
+      "oil_origin_value": "বাংলাদেশ",
+
+      "bag_material_value": "অরিজিনাল চামড়া",
+      "bag_dimensions_value": "৩০x৪০x১৫ সেমি",
+      "bag_capacity_value": "২০ লিটার",
+
+      "running_shoes_material_value": "মেশ ফেব্রিক",
+      "running_shoes_size_value": "US ৮-১৩",
+      "running_shoes_type_value": "অ্যাথলেটিক",
+
+      "casual_shoes_material_value": "ক্যানভাস",
+      "casual_shoes_size_value": "US ৬-১১",
+      "casual_shoes_type_value": "স্ট্রিটওয়্যার",
+
+
+      "coconut_oil_type_value": "ভার্জিন নারকেল তেল",
+      "coconut_oil_volume_value": "২৫০ মিলি",
+      "coconut_oil_origin_value": "শ্রীলংকা",
+
+      "olive_oil_type_value": "এক্সট্রা ভার্জিন",
+      "olive_oil_volume_value": "৫০০ মিলি",
+      "olive_oil_origin_value": "ইতালি",
+
+
+      "backpack_material_value": "নাইলন",
+      "backpack_dimensions_value": "৪৫x৩০x২০ সেমি",
+      "backpack_capacity_value": "২৫ লিটার",
+
+      "laptop_bag_material_value": "সিনথেটিক চামড়া",
+      "laptop_bag_dimensions_value": "৪০x৩০x৫ সেমি",
+      "laptop_bag_capacity_value": "১৫.৬\" ল্যাপটপের জন্য উপযুক্ত",
+
+      "material": "উপাদান",
+      "size": "সাইজ",
+      "type": "ধরন",
+      "volume": "পরিমাণ",
+      "origin": "উৎপত্তি",
+      "dimensions": "মাত্রা",
+      "capacity": "ধারণক্ষমতা"
+    }
     },
+
+    "product": {
+      "description": "বর্ণনা",
+      "specifications": "বিশেষ বৈশিষ্ট্য",
+      "shipping": "ডেলিভারি তথ্য",
+      "shipping_details": "আমরা সারা বাংলাদেশে দ্রুত এবং নির্ভরযোগ্য ডেলিভারি সেবা প্রদান করি:",
+      "shipping_option1": "ঢাকা শহর: ১-২ কর্মদিবস (৳৬০)",
+      "shipping_option2": "অন্যান্য শহর: ৩-৫ কর্মদিবস (৳১২০)",
+      "shipping_option3": "ক্যাশ অন ডেলিভারি সারা বাংলাদেশে",
+      "shipping_option4": "এক্সপ্রেস ডেলিভারি: ঢাকায় একই দিন (৳১৫০)",
+      "shipping_note": "১০০০ টাকার বেশি অর্ডারে বিনামূল্যে ডেলিভারি",
+
+
+      "reviews": "রিভিউসমূহ",
+      "based_on_count_reviews": "{{count}}টি রিভিউর উপর ভিত্তি করে",
+      "write_review": "রিভিউ লিখুন",
+      "no_reviews": "এখনও কোনো রিভিউ নেই",
+      "add_review": "রিভিউ যোগ করুন",
+      "your_rating": "আপনার রেটিং",
+      "your_name": "আপনার নাম",
+      "your_review": "আপনার রিভিউ",
+      "submit_review": "রিভিউ সাবমিট করুন",
+
+      "related_products": "সম্পর্কিত পণ্যসমূহ"
+    },
+
 
     "categories": {
       "title": "ক্যাটাগরি সমূহ",
@@ -89,19 +200,7 @@
       "button": "হোলসেলার হিসেবে যোগ দিন"
     }
   },
-    "product": {
-      "related_products": "সম্পর্কিত পণ্য",
-      "shipping_details": "আমরা আপনার চাহিদা পূরণের জন্য একাধিক শিপিং বিকল্প অফার করি:",
-      "shipping_option1": "স্ট্যান্ডার্ড শিপিং: ৩-৫ কর্মদিবস",
-      "shipping_option2": "এক্সপ্রেস শিপিং: ১-২ কর্মদিবস",
-      "shipping_option3": "আন্তর্জাতিক শিপিং: ৫-১০ কর্মদিবস",
-      "running_shoes": "রানিং জুতা",
-      "casual_shoes": "ক্যাজুয়াল স্নিকার্স",
-      "coconut_oil": "নারকেল তেল",
-      "olive_oil": "অলিভ অয়েল",
-      "backpack": "ব্যাকপ্যাক",
-      "laptop_bag": "ল্যাপটপ ব্যাগ"
-    },
+
     "breadcrumb": {
       "home": "হোম"
     },

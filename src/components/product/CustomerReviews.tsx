@@ -20,7 +20,6 @@ const CustomerReviews = ({ reviews, averageRating, reviewCount }: CustomerReview
 
   const handleSubmitReview = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle review submission
     console.log('Submitted review:', newReview);
     setNewReview({ rating: 5, comment: '', name: '' });
   };

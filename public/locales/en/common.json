@@ -39,32 +39,151 @@
         "reviewer2": "Mujahid",
         "review_address2": "Chittagong, Bangladesh"
       },
-      "products": {
-        "shoes": "Premium Shoes",
-        "shoes_description": "Stylish and comfortable shoes for everyday wear.",
-        "shoes_price": "299.99",
-        "shoes_rating": "4.5",
-        "shoes_stock": "10",
-  
-        "oil": "Organic Mustard Oil",
-        "oil_description": "Pure and natural mustard oil for cooking and skincare.",
-        "oil_price": "24.99",
-        "oil_rating": "4.2",
-        "oil_stock": "25",
-  
-        "bag": "Leather Laptop Bag",
-        "bag_description": "Durable and stylish leather bag perfect for professionals.",
-        "bag_price": "89.99",
-        "bag_rating": "4.7",
-        "bag_stock": "7"
-      },
-      "product": {
-        "category": "Featured",
-        "material": "Material",
-        "material_value": "Leather",
-        "size": "Size",
-        "size_value": "Medium"
+     "products": {
+      "shoes": "Premium Shoes",
+      "shoes_description": "Stylish and comfortable shoes for everyday wear.",
+      "shoes_price": "299.99",
+      "shoes_rating": "4.5",
+      "shoes_stock": "10",
+      "shoes_details": "These premium shoes are crafted from the finest materials to provide both style and comfort. The cushioned insoles and breathable lining ensure all-day comfort.",
+      
+      "oil": "Organic Mustard Oil",
+      "oil_description": "Pure and natural mustard oil for cooking and skincare.",
+      "oil_price": "24.99",
+      "oil_rating": "4.2",
+      "oil_stock": "25",
+      "oil_details": "Cold-pressed from premium quality mustard seeds with no additives or preservatives. Perfect for both cooking and traditional skincare routines.",
+      
+      "bag": "Leather Laptop Bag",
+      "bag_description": "Durable and stylish leather bag perfect for professionals.",
+      "bag_price": "89.99",
+      "bag_rating": "4.7",
+      "bag_stock": "7",
+      "bag_details": "Handcrafted from genuine leather, this laptop bag features multiple compartments for your laptop, documents, and accessories. The padded strap ensures comfortable carrying.",
+      
+      "running_shoes": "Running Shoes",
+      "running_shoes_description": "Lightweight running shoes for athletes.",
+      "running_shoes_price": "129.99",
+      "running_shoes_rating": "4.3",
+      "running_shoes_stock": "15",
+      "running_shoes_details": "Designed for runners who need responsive cushioning and breathability. The flexible sole provides excellent traction on various surfaces.",
+      
+      "casual_shoes": "Casual Sneakers",
+      "casual_shoes_description": "Everyday comfortable sneakers.",
+      "casual_shoes_price": "79.99",
+      "casual_shoes_rating": "4.1",
+      "casual_shoes_stock": "20",
+      "casual_shoes_details": "Perfect for daily wear with cushioned footbed and flexible sole. The classic design matches any casual outfit.",
+      
+      "coconut_oil": "Coconut Oil",
+      "coconut_oil_description": "Virgin coconut oil for cooking and skincare.",
+      "coconut_oil_price": "19.99",
+      "coconut_oil_rating": "4.4",
+      "coconut_oil_stock": "18",
+      "coconut_oil_details": "Extracted from fresh coconuts without chemical processing. Rich in nutrients and perfect for both culinary and beauty uses.",
+      
+      "olive_oil": "Olive Oil",
+      "olive_oil_description": "Extra virgin olive oil.",
+      "olive_oil_price": "29.99",
+      "olive_oil_rating": "4.6",
+      "olive_oil_stock": "12",
+      "olive_oil_details": "Imported from Mediterranean region with rich flavor and high nutritional value. Ideal for salads, cooking, and dressings.",
+      
+      "backpack": "Backpack",
+      "backpack_description": "Durable backpack for everyday use.",
+      "backpack_price": "49.99",
+      "backpack_rating": "4.2",
+      "backpack_stock": "22",
+      "backpack_details": "Water-resistant material with padded straps for comfort. Multiple compartments help organize your belongings efficiently.",
+      
+      "laptop_bag": "Laptop Bag",
+      "laptop_bag_description": "Professional laptop bag with padding.",
+      "laptop_bag_price": "59.99",
+      "laptop_bag_rating": "4.3",
+      "laptop_bag_stock": "14",
+      "laptop_bag_details": "Protects your laptop with cushioned compartments. Sleek design suitable for business professionals with dedicated pockets for accessories.",
+
+
+      "shoes_material_value": "Premium Leather",
+      "shoes_size_value": "US 7-12",
+      "shoes_type_value": "Casual",
+      
+
+      "oil_type_value": "Organic Mustard",
+      "oil_volume_value": "500ml",
+      "oil_origin_value": "Bangladesh",
+      
+
+      "bag_material_value": "Genuine Leather",
+      "bag_dimensions_value": "30x40x15cm",
+      "bag_capacity_value": "20L",
+      
+
+      "running_shoes_material_value": "Mesh Fabric",
+      "running_shoes_size_value": "US 8-13",
+      "running_shoes_type_value": "Athletic",
+      
+
+      "casual_shoes_material_value": "Canvas",
+      "casual_shoes_size_value": "US 6-11",
+      "casual_shoes_type_value": "Streetwear",
+      
+
+      "coconut_oil_type_value": "Virgin Coconut",
+      "coconut_oil_volume_value": "250ml",
+      "coconut_oil_origin_value": "Sri Lanka",
+      
+
+      "olive_oil_type_value": "Extra Virgin",
+      "olive_oil_volume_value": "500ml",
+      "olive_oil_origin_value": "Italy",
+      
+
+      "backpack_material_value": "Nylon",
+      "backpack_dimensions_value": "45x30x20cm",
+      "backpack_capacity_value": "25L",
+      
+
+      "laptop_bag_material_value": "Synthetic Leather",
+      "laptop_bag_dimensions_value": "40x30x5cm",
+      "laptop_bag_capacity_value": "Fits 15.6\" Laptop",
+      
+
+      "material": "Material",
+      "size": "Size",
+      "type": "Type",
+      "volume": "Volume",
+      "origin": "Origin",
+      "dimensions": "Dimensions",
+      "capacity": "Capacity"
       }
+    },
+
+    "product": {
+      "description": "Description",
+      "specifications": "Specifications",
+      "shipping": "Shipping Information",
+        "shipping_details": "We offer fast and reliable shipping across Bangladesh with multiple delivery options:",
+        "shipping_option1": "Dhaka Metro: 1-2 business days (৳60)",
+        "shipping_option2": "Other Cities: 3-5 business days (৳120)",
+        "shipping_option3": "Cash on Delivery available nationwide",
+        "shipping_option4": "Express Delivery: Same day in Dhaka (৳150)",
+        "shipping_note": "Free shipping for orders over ৳1000",
+
+      "reviews": "Reviews",
+      "based_on_count_reviews": "Based on {{count}} reviews",
+      "write_review": "Write a review",
+      "no_reviews": "No reviews yet",
+      "add_review": "Add a review",
+      "your_rating": "Your rating",
+      "your_name": "Your name",
+      "your_review": "Your review",
+      "submit_review": "Submit review",
+
+      "related_products": "Related Products"
+
+
+
     },
     
     "categories": {
@@ -92,19 +211,7 @@
       },
 
     
-   "product": {
-      "related_products": "Related Products",
-      "shipping_details": "We offer multiple shipping options to meet your needs:",
-      "shipping_option1": "Standard Shipping: 3-5 business days",
-      "shipping_option2": "Express Shipping: 1-2 business days",
-      "shipping_option3": "International Shipping: 5-10 business days",
-      "running_shoes": "Running Shoes",
-      "casual_shoes": "Casual Sneakers",
-      "coconut_oil": "Coconut Oil",
-      "olive_oil": "Olive Oil",
-      "backpack": "Backpack",
-      "laptop_bag": "Laptop Bag"
-    },
+
   "breadcrumb": {
     "home": "Home"
   },
