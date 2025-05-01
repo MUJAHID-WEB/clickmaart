@@ -34,7 +34,7 @@ const CategoryGrid = () => {
 
   return (
     <>
-      <h2 className="text-2xl font-bold">Categories</h2>
+      <h2 className="text-2xl font-bold">{t("categories.title")}</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 mb-12">
         {categories.map((category) => (
           <Link
@@ -56,7 +56,7 @@ const CategoryGrid = () => {
                     {category.name}
                   </h3>
                   <p className="text-white/90">
-                    {category.count} {t("products.available")}
+                    {category.count} {t("categories.available")}
                   </p>
                 </div>
               </div>

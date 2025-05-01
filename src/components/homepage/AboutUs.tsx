@@ -10,15 +10,15 @@ const AboutUs = () => {
   const reviews = [
     {
       id: 1,
-      text: t("about.review_text"),
-      name: "Shojib",
-      location: "Dhaka, Bangladesh",
+      text: t("home.about.review_text1"),
+      name: t("home.about.reviewer1"),
+      location: t("home.about.review_address1"),
     },
     {
       id: 2,
-      text: t("about.review_text"),
-      name: "Mujahid",
-      location: "Chittagong, Bangladesh",
+      text: t("home.about.review_text2"),
+      name: t("home.about.reviewer2"),
+      location: t("home.about.review_address2"),
     },
   ];
 
@@ -39,10 +39,10 @@ const AboutUs = () => {
           <div className="lg:w-2/3">
             <div className="mb-8">
               <h4 className="text-xl font-bold text-secondary mb-2">
-                {t("about.subtitle")}
+                {t("home.about.subtitle")}
               </h4>
               <h2 className="text-4xl font-bold text-primary uppercase">
-                {t("about.title")}
+                {t("home.about.title")}
               </h2>
             </div>
 
@@ -58,12 +58,12 @@ const AboutUs = () => {
               </div>
               <div className="md:w-3/5 space-y-6">
                 <p className="text-lg text-gray-700">
-                  {t("about.description")}
+                  {t("home.about.description")}
                 </p>
 
                 <div className="space-y-6">
                   <h3 className="text-xl font-bold text-gray-800">
-                    {t("about.list_title")}
+                    {t("home.about.list_title")}
                   </h3>
                   <div className="flex flex-col md:flex-row gap-8">
                     <ul className="space-y-2 list-disc pl-5">
@@ -95,7 +95,7 @@ const AboutUs = () => {
                   href="#"
                   className="inline-flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-medium"
                 >
-                  {t("about.learn_more")}
+                  {t("home.about.learn_more")}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="14"

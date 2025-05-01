@@ -60,8 +60,8 @@ const ProductCard = ({ product, showCategory = true }: ProductCardProps) => {
         <div className="flex items-center gap-2">
           {product.discount > 0 ? (
             <>
-              <span className="font-bold text-lg">${discountedPrice.toFixed(2)}</span>
-              <span className="text-sm text-gray-500 line-through">${product.price.toFixed(2)}</span>
+              <span className="font-bold text-lg">Tk. {discountedPrice.toFixed(2)}</span>
+              <span className="text-sm text-gray-500 line-through">Tk. {product.price.toFixed(2)}</span>
             </>
           ) : (
             <span className="font-bold text-lg">${product.price.toFixed(2)}</span>

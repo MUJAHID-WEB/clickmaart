@@ -23,7 +23,7 @@ const HeroCarousel = () => {
       title: t('home.hero.title2'),
       subtitle: t('home.hero.subtitle2'),
       ctaText: t('home.register_now'),
-      link: '/'
+      link: '/wholesaler-registration'
     },
     {
       id: 3,
@@ -31,7 +31,7 @@ const HeroCarousel = () => {
       title: t('home.hero.title3'),
       subtitle: t('home.hero.subtitle3'),
       ctaText: t('home.register_now'),
-      link: '/'
+      link: '/retailer-registration'
     },
   ];
 
@@ -85,7 +85,7 @@ const HeroCarousel = () => {
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"
-            priority={currentSlide === 0} // Only prioritize first image for performance
+            priority={currentSlide === 0} // 
           />
           <div className="absolute inset-0 bg-[rgba(0,0,0,0.70)] flex items-center">
             <div className="container mx-auto px-4 text-white">

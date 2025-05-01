@@ -1,18 +1,18 @@
 import React from "react";
-// import Image from 'next/image';
-// import Link from 'next/link';
+import { useTranslation } from "next-i18next";
 
 const BecomeMember = () => {
+  const { t } = useTranslation("common");
+
   return (
     <section className="z-2 relative py-8 md:pt-8 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">
-            Grow Your Wholesale & Retail Business Effortlessly
+          {t("become_member.title")}
           </h2>
           <div className="text-lg text-gray-600">
-            Connect with more buyers, streamline your sales, and maximize
-            profits with our powerful platform
+          {t("become_member.subtitle")}
           </div>
         </div>
 
@@ -30,15 +30,15 @@ const BecomeMember = () => {
             </div>
             <div className="p-11 w-full md:w-2/5 flex justify-center sm:justify-start">
               <div className="flex flex-col items-center sm:items-start gap-3">
-                <h4 className="text-xl">Become a best</h4>
+                <h4 className="text-xl">{t("become_member.retailer.label_1")}</h4>
                 <h3 className="font-extrabold text-2xl text-[#000] mt-1">
-                  Retailer
+                {t("become_member.retailer.label_2")}
                 </h3>
                 <button
                   type="button"
                   className="flex items-center justify-center min-w-[120px] px-4 py-2 text-[16px] leading-[25px] font-bold text-white text-center rounded-[10px] bg-gradient-to-r from-[#1f2f28] via-[#456053] to-[#3f4743] shadow-md transition-all duration-300 ease-in-out border-0"
                 >
-                  Register Now
+                  {t("become_member.retailer.button")}
                 </button>
               </div>
             </div>
@@ -57,15 +57,15 @@ const BecomeMember = () => {
             </div>
             <div className="p-11 w-full md:w-2/5 flex justify-center items-end sm:justify-end">
               <div className="flex flex-col items-center sm:items-end gap-3">
-                <h4 className="text-xl">Become a smart</h4>
+                <h4 className="text-xl">{t("become_member.wholesaler.label_1")}</h4>
                 <h3 className="font-extrabold text-2xl text-[#000] mt-1">
-                  Wholesaler
+                {t("become_member.wholesaler.label_2")}
                 </h3>
                 <button
                   type="button"
                   className="flex items-center justify-center min-w-[120px] px-4 py-2 text-[16px] leading-[25px] font-bold text-white text-center rounded-[10px] bg-gradient-to-r from-[#1f2f28] via-[#456053] to-[#3f4743] shadow-md transition-all duration-300 ease-in-out border-0"
                 >
-                  Register Now
+                  {t("become_member.wholesaler.button")}
                 </button>
               </div>
             </div>

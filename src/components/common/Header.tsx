@@ -1,8 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
-import { useLanguage } from "../../contexts/LanguageContext";
-import { useCart } from "../../contexts/CartContext";
 import {
   ChevronDownIcon,
   MagnifyingGlassIcon as SearchIcon,
@@ -10,11 +8,13 @@ import {
   UserIcon,
 } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { useCart } from "@/contexts/CartContext";
+
 
 const Header = () => {
   const { t } = useTranslation("common");
   const { language, changeLanguage } = useLanguage();
-  // const { cartCount } = useCart();
   const { cartCount, cartItems } = useCart();
   console.log("Header cart count:", cartCount, "Items:", cartItems);
 
@@ -26,7 +26,6 @@ const Header = () => {
   const langDropdownRef = useRef<HTMLDivElement>(null);
   const joinDropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -47,7 +46,6 @@ const Header = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Focus search input when shown
   useEffect(() => {
     if (showSearch && searchRef.current) {
       searchRef.current.focus();
@@ -56,7 +54,6 @@ const Header = () => {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    // Implement search functionality
     console.log("Searching for:", searchQuery);
     setShowSearch(false);
     setSearchQuery("");
@@ -68,6 +65,14 @@ const Header = () => {
       <div className="bg-gray-100 py-2">
         <div className="container mx-auto px-4 flex justify-end items-center space-x-8">
           {/* Language Selector */}
+          {/* <div className="relative">
+            <button
+              onClick={() => changeLanguage(language === 'en' ? 'bn' : 'en')}
+              className="flex items-center text-sm hover:text-indigo-600"
+            >
+              {language === "en" ? "English" : "বাংলা"}
+            </button>
+          </div> */}
           <div className="relative" ref={langDropdownRef}>
             <button
               onClick={() => setShowLangDropdown(!showLangDropdown)}
@@ -164,10 +169,16 @@ const Header = () => {
                 {t("header.contact")}
               </Link>
               <Link
-                href="/stores"
+                href="/product"
                 className="hover:text-indigo-600 font-medium"
               >
-                {t("header.stores")}
+                {t("header.product")}
+              </Link>
+              <Link
+                href="/store"
+                className="hover:text-indigo-600 font-medium"
+              >
+                {t("header.store")}
               </Link>
             </nav>
           </div>

@@ -6,7 +6,8 @@
       "home": "Home",
       "about": "About Us",
       "contact": "Contact Us",
-      "stores": "Stores",
+      "product": "My Product",
+      "store": "My Store",
       "search_placeholder": "Search products...",
       "sign_in": "Sign In"
     },
@@ -23,36 +24,87 @@
         "subtitle2": "Our platform helps you sell more, manage inventory better, and grow your business faster",
         "title3": "Transform Your Retail Business",
         "subtitle3": "Discover how top sellers are increasing revenue with our platform"
+      },
+      "about": {
+        "subtitle": "About",
+        "title": "We Are ClickMaart",
+        "description": "ClickMaart is Bangladesh's largest dropshipping and reselling platform. Without any kind of capital or investment, you can run an online business from home with products from numerous categories through us.",
+        "list_title": "We help you planning your journey",
+        "list_item": "Lorem Ipsum is simply dummy text",
+        "learn_more": "Learn More",
+        "review_text1": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ncididunt ut labore et olore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ncididunt ut labore et olore magna aliqua.",
+        "reviewer1": "Shojib",
+        "review_address1": "Dhaka, Bangladesh",
+        "review_text2": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ncididunt ut labore et olore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ncididunt ut labore et olore magna aliqua.",
+        "reviewer2": "Mujahid",
+        "review_address2": "Chittagong, Bangladesh"
+      },
+      "products": {
+        "shoes": "Premium Shoes",
+        "shoes_description": "Stylish and comfortable shoes for everyday wear.",
+        "shoes_price": "299.99",
+        "shoes_rating": "4.5",
+        "shoes_stock": "10",
+  
+        "oil": "Organic Mustard Oil",
+        "oil_description": "Pure and natural mustard oil for cooking and skincare.",
+        "oil_price": "24.99",
+        "oil_rating": "4.2",
+        "oil_stock": "25",
+  
+        "bag": "Leather Laptop Bag",
+        "bag_description": "Durable and stylish leather bag perfect for professionals.",
+        "bag_price": "89.99",
+        "bag_rating": "4.7",
+        "bag_stock": "7"
+      },
+      "product": {
+        "category": "Featured",
+        "material": "Material",
+        "material_value": "Leather",
+        "size": "Size",
+        "size_value": "Medium"
       }
     },
-    "about": {
-      "subtitle": "About",
-      "title": "We Are ClickMaart",
-      "description": "ClickMaart is Bangladesh's largest dropshipping and reselling platform. Without any kind of capital or investment, you can run an online business from home with products from numerous categories through us.",
-      "list_title": "We help you planning your journey",
-      "list_item": "Lorem Ipsum is simply dummy text",
-      "learn_more": "Learn More",
-      "review_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ncididunt ut labore et olore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ncididunt ut labore et olore magna aliqua."
-    },
+    
     "categories": {
+      "title": "Categories",
+      "available": "products available",
       "electronics": "Electronics",
       "clothing": "Clothing",
       "home": "Home Goods",
       "books": "Books"
     },
+
+      "become_member": {
+        "title": "Grow Your Wholesale & Retail Business Effortlessly",
+        "subtitle": "Connect with more buyers, streamline your sales, and maximize profits with our powerful platform",
+        "retailer": {
+          "label_1": "Become a trusted",
+          "label_2": "Retail Partner",
+          "button": "Join as Retailer"
+        },
+        "wholesaler": {
+          "label_1": "Become a leading",
+          "label_2": "Wholesale Vendor",
+          "button": "Join as Wholesaler"
+        }
+      },
+
+    
    "product": {
-    "related_products": "Related Products",
-    "shipping_details": "We offer multiple shipping options to meet your needs:",
-    "shipping_option1": "Standard Shipping: 3-5 business days",
-    "shipping_option2": "Express Shipping: 1-2 business days",
-    "shipping_option3": "International Shipping: 5-10 business days",
-    "running_shoes": "Running Shoes",
-    "casual_shoes": "Casual Sneakers",
-    "coconut_oil": "Coconut Oil",
-    "olive_oil": "Olive Oil",
-    "backpack": "Backpack",
-    "laptop_bag": "Laptop Bag"
-  },
+      "related_products": "Related Products",
+      "shipping_details": "We offer multiple shipping options to meet your needs:",
+      "shipping_option1": "Standard Shipping: 3-5 business days",
+      "shipping_option2": "Express Shipping: 1-2 business days",
+      "shipping_option3": "International Shipping: 5-10 business days",
+      "running_shoes": "Running Shoes",
+      "casual_shoes": "Casual Sneakers",
+      "coconut_oil": "Coconut Oil",
+      "olive_oil": "Olive Oil",
+      "backpack": "Backpack",
+      "laptop_bag": "Laptop Bag"
+    },
   "breadcrumb": {
     "home": "Home"
   },

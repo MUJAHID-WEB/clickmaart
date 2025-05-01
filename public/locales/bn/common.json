@@ -3,10 +3,11 @@
       "join_us": "যোগ দিন",
       "become_retailer": "খুচরা বিক্রেতা হন",
       "become_wholesaler": "পাইকারি বিক্রেতা হন",
-      "home": "Home",
+      "home": "হোম",
       "about": "আমাদের সম্পর্কে",
       "contact": "যোগাযোগ",
-      "stores": "স্টোরসমূহ",
+      "product": "আমার পণ্য",
+      "store": "আমার স্টোর",
       "search_placeholder": "পণ্য খুঁজুন...",
       "sign_in": "সাইন ইন"
     },
@@ -23,36 +24,84 @@
         "subtitle2": "আমাদের প্ল্যাটফর্ম আপনাকে বেশি বিক্রি করতে, ইনভেন্টরি ভালোভাবে ব্যবস্থাপনা করতে এবং আপনার ব্যবসা দ্রুত বৃদ্ধি করতে সাহায্য করে",
         "title3": "আপনার খুচরা ব্যবসাকে রূপান্তর করুন",
         "subtitle3": "আমাদের প্ল্যাটফর্ম ব্যবহার করে শীর্ষ বিক্রেতারা কিভাবে আয় বাড়াচ্ছেন তা আবিষ্কার করুন"
+      },
+      "about": {
+        "subtitle": "আমাদের সম্পর্কে",
+        "title": "আমরা ক্লিকমার্ট",
+        "description": "ClickMaart বাংলাদেশের সবচেয়ে বড় ড্রপশিপিং এবং রিসেলিং প্লাটফর্ম। কোনো ধরনের মূলধন বা বিনিয়োগ ছাড়াই আপনি ঘরে বসে আমাদের মাধ্যমে অসংখ্য ক্যাটাগরির পণ্য নিয়ে অনলাইনে ব্যবসা চালাতে পারবেন।",
+        "list_title": "আমরা আপনার যাত্রা পরিকল্পনায় সাহায্য করি",
+        "list_item": "লোরেম ইপসাম শুধু ডামি টেক্সট",
+        "learn_more": "আরও জানুন",
+        "review_text1": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ncididunt ut labore et olore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ncididunt ut labore et olore magna aliqua.",
+        "reviewer1": "Shojib",
+        "review_address1": "Dhaka, Bangladesh",
+        "review_text2": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ncididunt ut labore et olore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ncididunt ut labore et olore magna aliqua.",
+        "reviewer2": "Mujahid",
+        "review_address2": "Chittagong, Bangladesh"
+      },
+      "products": {
+        "shoes": "প্রিমিয়াম জুতো",
+        "shoes_description": "দৈনন্দিন ব্যবহারের জন্য আড়ম্বরপূর্ণ এবং আরামদায়ক জুতো।",
+        "shoes_price": "২৯৯.৯৯",
+        "shoes_rating": "৪.৫",
+        "shoes_stock": "১০",
+  
+        "oil": "অরগানিক সরিষার তেল",
+        "oil_description": "রান্না এবং ত্বকের যত্নের জন্য খাঁটি ও প্রাকৃতিক সরিষার তেল।",
+        "oil_price": "২৪.৯৯",
+        "oil_rating": "৪.২",
+        "oil_stock": "২৫",
+  
+        "bag": "চামড়ার ল্যাপটপ ব্যাগ",
+        "bag_description": "পেশাদারদের জন্য টেকসই এবং আড়ম্বরপূর্ণ চামড়ার ব্যাগ।",
+        "bag_price": "৮৯.৯৯",
+        "bag_rating": "৪.৭",
+        "bag_stock": "৭"
+      },
+      "product": {
+        "category": "বৈশিষ্ট্যযুক্ত",
+        "material": "উপাদান",
+        "material_value": "চামড়া",
+        "size": "আকার",
+        "size_value": "মধ্যম"
       }
     },
-    "about": {
-      "subtitle": "আমাদের সম্পর্কে",
-      "title": "আমরা ক্লিকমার্ট",
-      "description": "ClickMaart বাংলাদেশের সবচেয়ে বড় ড্রপশিপিং এবং রিসেলিং প্লাটফর্ম। কোনো ধরনের মূলধন বা বিনিয়োগ ছাড়াই আপনি ঘরে বসে আমাদের মাধ্যমে অসংখ্য ক্যাটাগরির পণ্য নিয়ে অনলাইনে ব্যবসা চালাতে পারবেন।",
-      "list_title": "আমরা আপনার যাত্রা পরিকল্পনায় সাহায্য করি",
-      "list_item": "লোরেম ইপসাম শুধু ডামি টেক্সট",
-      "learn_more": "আরও জানুন",
-      "review_text": "লোরেম ইপসাম ডোলর সিট আমেট, কনসেক্টেটুর এডিপিসিসিং এলিট, সেড ডো ইয়ুসমোড টেম্পোর এনসিডিডান্ট উট ল্যাবোর এট ওলোর ম্যাগনা আলিকুয়া। লোরেম ইপসাম ডোলর সিট আমেট, কনসেক্টেটুর এডিপিসিসিং এলিট, সেড ডো ইয়ুসমোড টেম্পোর এনসিডিডান্ট উট ল্যাবোর এট ওলোর ম্যাগনা আলিকুয়া।"
-    },
+
     "categories": {
+      "title": "ক্যাটাগরি সমূহ",
+      "available": "টি পণ্য আছে",
       "electronics": "ইলেকট্রনিক্স",
       "clothing": "পোশাক",
       "home": "গৃহ সরঞ্জাম",
       "books": "বই"
     },
-    "product": {
-    "related_products": "সম্পর্কিত পণ্য",
-    "shipping_details": "আমরা আপনার চাহিদা পূরণের জন্য একাধিক শিপিং বিকল্প অফার করি:",
-    "shipping_option1": "স্ট্যান্ডার্ড শিপিং: ৩-৫ কর্মদিবস",
-    "shipping_option2": "এক্সপ্রেস শিপিং: ১-২ কর্মদিবস",
-    "shipping_option3": "আন্তর্জাতিক শিপিং: ৫-১০ কর্মদিবস",
-    "running_shoes": "রানিং জুতা",
-    "casual_shoes": "ক্যাজুয়াল স্নিকার্স",
-    "coconut_oil": "নারকেল তেল",
-    "olive_oil": "অলিভ অয়েল",
-    "backpack": "ব্যাকপ্যাক",
-    "laptop_bag": "ল্যাপটপ ব্যাগ"
+ "become_member": {
+    "title": "আপনার পাইকারি ও খুচরা ব্যবসা সহজভাবে বাড়ান",
+    "subtitle": "আরো ক্রেতার সাথে সংযোগ স্থাপন করুন, বিক্রয়কে সহজ করুন এবং আমাদের শক্তিশালী প্ল্যাটফর্মের মাধ্যমে মুনাফা সর্বাধিক করুন",
+    "retailer": {
+      "label_1": "হোন একটি বিশ্বস্ত",
+      "label_2": "খুচরা অংশীদার",
+      "button": "রিটেইলার হিসেবে যোগ দিন"
+    },
+    "wholesaler": {
+      "label_1": "হোন একটি নেতৃস্থানীয়",
+      "label_2": "পাইকারি বিক্রেতা",
+      "button": "হোলসেলার হিসেবে যোগ দিন"
+    }
   },
+    "product": {
+      "related_products": "সম্পর্কিত পণ্য",
+      "shipping_details": "আমরা আপনার চাহিদা পূরণের জন্য একাধিক শিপিং বিকল্প অফার করি:",
+      "shipping_option1": "স্ট্যান্ডার্ড শিপিং: ৩-৫ কর্মদিবস",
+      "shipping_option2": "এক্সপ্রেস শিপিং: ১-২ কর্মদিবস",
+      "shipping_option3": "আন্তর্জাতিক শিপিং: ৫-১০ কর্মদিবস",
+      "running_shoes": "রানিং জুতা",
+      "casual_shoes": "ক্যাজুয়াল স্নিকার্স",
+      "coconut_oil": "নারকেল তেল",
+      "olive_oil": "অলিভ অয়েল",
+      "backpack": "ব্যাকপ্যাক",
+      "laptop_bag": "ল্যাপটপ ব্যাগ"
+    },
     "breadcrumb": {
       "home": "হোম"
     },

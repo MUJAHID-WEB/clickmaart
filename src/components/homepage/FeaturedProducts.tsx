@@ -4,54 +4,61 @@ import Link from 'next/link';
 
 const FeaturedProducts = () => {
   const { t } = useTranslation('common');
+
+  const bnToEn = (bnNumber: string): string => {
+    const bnDigits = '০১২৩৪৫৬৭৮৯';
+    const enDigits = '0123456789';
+    return bnNumber.replace(/[০-৯]/g, digit => enDigits[bnDigits.indexOf(digit)]);
+  };
   
   const featuredProducts = [
     {
       id: '1',
-      name: t('products.shoes'),
-      price: 299.99,
+      name: t('home.products.shoes'),
+      price: parseFloat(bnToEn(t('home.products.shoes_price'))),
       discount: 15,
       images: ['/images/homepage/Product1.jpg'],
-      rating: 4.5,
-      category: 'shoes',
-      description: t('products.shoes_description'),
-      stock: 10,
+      rating: parseFloat(bnToEn(t('home.products.shoes_rating'))),
+      category: t('product.category'),
+      description: t('home.products.shoes_description'),
+      stock: parseInt(bnToEn(t('home.products.shoes_stock'))),
       specifications: [
-        { label: t('product.material'), value: 'Leather' },
-        { label: t('product.size'), value: 'Various' }
+        { label: t('product.material'), value: t('product.material_value') },
+        { label: t('product.size'), value: t('product.size_value') }
       ]
     },
     {
       id: '2',
-      name: t('products.oil'),
-      price: 24.99,
+      name: t('home.products.oil'),
+      price: parseFloat(bnToEn(t('home.products.shoes_price'))),
       discount: 10,
       images: ['/images/homepage/Product2.jpg'],
-      rating: 4.2,
-      category: 'oil',
-      description: t('products.oil_description'),
-      stock: 25,
+      rating: parseFloat(bnToEn(t('home.products.shoes_rating'))),
+      category: t('product.category'),
+      description: t('home.products.oil_description'),
+      stock: parseInt(bnToEn(t('home.products.shoes_stock'))),
       specifications: [
-        { label: t('product.volume'), value: '500ml' },
-        { label: t('product.type'), value: 'Organic' }
+        { label: t('product.material'), value: t('product.material_value') },
+        { label: t('product.size'), value: t('product.size_value') }
       ]
     },
     {
       id: '3',
-      name: t('products.bag'),
-      price: 89.99,
+      name: t('home.products.bag'),
+      price: parseFloat(bnToEn(t('home.products.shoes_price'))),
       discount: 20,
       images: ['/images/homepage/Product3.jpg'],
-      rating: 4.7,
-      category: 'bags',
-      description: t('products.bag_description'),
-      stock: 15,
+      rating: parseFloat(bnToEn(t('home.products.shoes_rating'))),
+      category: t('product.category'),
+      description: t('home.products.bag_description'),
+      stock: parseInt(bnToEn(t('home.products.shoes_stock'))),
       specifications: [
-        { label: t('product.material'), value: 'Canvas' },
-        { label: t('product.dimensions'), value: '30x40cm' }
+        { label: t('product.material'), value: t('product.material_value') },
+        { label: t('product.size'), value: t('product.size_value') }
       ]
     },
   ];
+  
 
   return (
     <section className="mb-12">
