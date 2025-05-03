@@ -209,7 +209,33 @@
           "button": "Join as Wholesaler"
         }
       },
-
+      "products_grid": {
+        "title": "All Products",
+        "search": "Search Products",
+        "search_placeholder": "Search by product name...",
+        "categories": "Categories",
+        "categories.all": "All Categories",
+        "categories.shoes": "Shoes",
+        "categories.oil": "Oil",
+        "categories.bags": "Bags",
+        "price_range": "Price Range",
+        "no_products": "No products match your filters"
+      },
+      "order": {
+        "title": "Order",
+        "items": "Order Items",
+        "total": "Total",
+        "shipping_info": "Shipping Information",
+        "shipping_address": "Shipping Address",
+        "payment_method": "Payment Method",
+        "order_date": "Order Date",
+        "order_status": "Order Status",
+        "summary": "Order Summary",
+        "subtotal": "Subtotal",
+        "shipping": "Shipping",
+        "print_invoice": "Print Invoice",
+        "continue_shopping": "Continue Shopping"
+      },
     
 
   "breadcrumb": {
@@ -244,63 +270,154 @@
       "view_order": "View Order Details"
     },
 
-    "register": {
-      "title": "Create Account",
-      "name": "Full Name",
-      "email": "Email",
-      "password": "Password",
-      "confirm_password": "Confirm Password",
-      "submit_button": "Register",
-      "already_have_account": "Already have an account? Login",
-      "required_field": "This field is required",
-      "invalid_email": "Invalid email address",
-      "password_min_length": "Password must be at least 8 characters",
-      "passwords_mismatch": "Passwords don't match"
-    },
-    "login": {
-      "title": "Login",
-      "email": "Email",
-      "password": "Password",
-      "remember_me": "Remember me",
-      "forgot_password": "Forgot password?",
-      "submit_button": "Login",
-      "no_account": "Don't have an account? Register",
-      "required_field": "This field is required",
-      "invalid_email": "Invalid email address"
-    },
    "how_it_works": {
-    "title": "How ClickMaart Works",
-    "subtitle": "Discover our simple process for retailers, wholesalers, and customers",
-    "learn_more": "Join Now",
-    "tab1": {
-      "title": "For Retailers",
-      "description": "Join our platform to expand your business and reach more customers",
-      "point1": "Easy registration process",
-      "point2": "Access to wholesale prices",
-      "point3": "Manage your inventory online"
+      "title": "How ClickMaart Works",
+      "subtitle": "Discover our simple process for retailers, wholesalers, and customers",
+      "learn_more": "Join Now",
+      "tab1": {
+        "title": "For Retailers",
+        "description": "Join our platform to expand your business and reach more customers",
+        "point1": "Easy registration process",
+        "point2": "Access to wholesale prices",
+        "point3": "Manage your inventory online"
+      },
+      "tab2": {
+        "title": "For Wholesalers",
+        "description": "Connect with retailers and grow your distribution network",
+        "point1": "Showcase your products",
+        "point2": "Manage orders efficiently",
+        "point3": "Expand your market reach"
+      },
+      "tab3": {
+        "title": "For Customers",
+        "description": "Shop from local retailers with convenience and confidence",
+        "point1": "Find products easily",
+        "point2": "Secure payment options",
+        "point3": "Fast delivery services"
+      },
+      "tab4": {
+        "title": "Delivery Process",
+        "description": "Our efficient delivery system ensures your products arrive on time",
+        "point1": "Real-time tracking",
+        "point2": "Professional delivery partners",
+        "point3": "Flexible delivery options"
+      }
     },
-    "tab2": {
-      "title": "For Wholesalers",
-      "description": "Connect with retailers and grow your distribution network",
-      "point1": "Showcase your products",
-      "point2": "Manage orders efficiently",
-      "point3": "Expand your market reach"
+    "contact": {
+      "title": "Contact Us",
+      "form_title": "Send Us a Message",
+      "form_success": "Your message has been sent successfully!",
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "required_field": "This field is required",
+      "invalid_email": "Please enter a valid email address",
+      "contact_info": "Contact Information",
+      "address": "Address",
+      "hours": "Business Hours",
+      "weekdays": "Monday - Friday",
+      "weekends": "Saturday - Sunday",
+      "find_us": "Find Us on Map"
     },
-    "tab3": {
-      "title": "For Customers",
-      "description": "Shop from local retailers with convenience and confidence",
-      "point1": "Find products easily",
-      "point2": "Secure payment options",
-      "point3": "Fast delivery services"
+    "about": {
+      "page_title": "About Us",
+      "meta_description": "Learn about our company, services, and find answers to frequently asked questions",
+      "title": "About Our Platform",
+      
+      "about_us": "About Our Company",
+      "about_content": "We are a leading e-commerce platform connecting wholesalers and retailers across Bangladesh. Our mission is to revolutionize the traditional supply chain by providing a seamless digital marketplace that benefits all stakeholders.",
+      
+      "mission": "Our Mission",
+      "mission_content": "To empower businesses of all sizes by providing innovative digital solutions that simplify procurement and distribution processes.",
+      
+      "vision": "Our Vision",
+      "vision_content": "To become the most trusted B2B e-commerce platform in Bangladesh, transforming how businesses connect and trade.",
+      
+      "our_services": "Our Services",
+      "services_intro": "We provide comprehensive solutions for all types of businesses in the supply chain:",
+      "wholesaler_dashboard": "Wholesaler Dashboard",
+      "wholesaler_description": "Manage inventory, set wholesale prices, and connect with retailers nationwide with our powerful dashboard.",
+      "retailer_dashboard": "Retailer Dashboard",
+      "retailer_description": "Browse products from multiple wholesalers, place orders, and manage purchases in one convenient platform.",
+      "store_dashboard": "Retailer Store",
+      "store_description": "Create your own branded digital storefront with our white-label e-commerce solution.",
+      "customer_dashboard": "Customer Satisfaction",
+      "customer_description": "Customer can buy their dreams and can be part of our journey.",
+      
+      "faqs": "Frequently Asked Questions",
+      "faqs_intro": "Here are answers to some common questions about our platform:",
+      "faq1_question": "How do I register as a wholesaler?",
+      "faq1_answer": "Click on the Register button and select 'Wholesaler' account type. Complete the verification process to get access to wholesale prices.",
+      "faq2_question": "What are the benefits for retailers?",
+      "faq2_answer": "Retailers get access to thousands of products at competitive prices with convenient delivery options across Bangladesh.",
+      "faq3_question": "How does the delivery system work?",
+      "faq3_answer": "We partner with reliable logistics providers to ensure timely delivery. You can track your orders in real-time through your dashboard.",
+      "faq4_question": "What payment methods are accepted?",
+      "faq4_answer": "We accept cash on delivery, mobile banking (bKash, Nagad, Rocket), and bank transfers for maximum convenience.",
+      "faq5_question": "Is there customer support available?",
+      "faq5_answer": "Yes, our dedicated support team is available 7 days a week from 9AM to 11PM to assist you with any questions."
     },
-    "tab4": {
-      "title": "Delivery Process",
-      "description": "Our efficient delivery system ensures your products arrive on time",
-      "point1": "Real-time tracking",
-      "point2": "Professional delivery partners",
-      "point3": "Flexible delivery options"
-    }
-  },
+    "auth": {
+      "sign_in_title": "Sign in to your account",
+      "sign_up_title": "Create a new account",
+      "forgot_password_title": "Reset your password",
+      "forgot_password_instructions": "Enter your email and we'll send you a link to reset your password",
+      "email": "Email address",
+      "email_placeholder": "Email address",
+      "email_required": "Email is required",
+      "invalid_email": "Invalid email address",
+      "password": "Password",
+      "password_placeholder": "Password",
+      "password_required": "Password is required",
+      "password_min": "Password must be at least 6 characters",
+      "confirm_password": "Confirm Password",
+      "confirm_password_placeholder": "Confirm Password",
+      "confirm_password_required": "Please confirm your password",
+      "password_mismatch": "Passwords must match",
+      "name": "Full Name",
+      "name_placeholder": "Full Name",
+      "name_required": "Name is required",
+      "remember_me": "Remember me",
+      "forgot_password": "Forgot your password?",
+      "sign_in_button": "Sign in",
+      "sign_up_button": "Sign up",
+      "reset_password_button": "Reset Password",
+      "no_account": "Don't have an account?",
+      "have_account": "Already have an account?",
+      "sign_up_link": "Sign up",
+      "sign_in_link": "Sign in",
+      "back_to_sign_in": "Back to sign in",
+
+      "wholesaler_signup": "Wholesaler Registration",
+    "retailer_signup": "Retailer Registration",
+    "business_name": "Business Name",
+    "business_name_placeholder": "Your business name",
+    "tax_id": "Tax ID/VAT Number",
+    "tax_id_placeholder": "Business tax identification number",
+    "contact_person": "Contact Person",
+    "contact_person_placeholder": "Primary contact name",
+    "business_address": "Business Address",
+    "business_address_placeholder": "Your business location",
+    "shop_name": "Shop Name",
+    "shop_name_placeholder": "Your shop name",
+    "shop_type": "Shop Type",
+    "select_shop_type": "Select shop type",
+    "shop_types": {
+      "grocery": "Grocery Store",
+      "electronics": "Electronics Shop",
+      "clothing": "Clothing Store",
+      "other": "Other"
+    },
+    "owner_name": "Owner Name",
+    "owner_name_placeholder": "Shop owner's name",
+    "shop_address": "Shop Address",
+    "shop_address_placeholder": "Your shop location",
+    "register_as_wholesaler": "Register as Wholesaler",
+    "register_as_retailer": "Register as Retailer",
+    "existing_account": "Already have an account?"
+    },
     "footer": {
       "description": "ClickMaart is a complete package! It's time to empower your online business with powerful features!",
       "support": "Support",

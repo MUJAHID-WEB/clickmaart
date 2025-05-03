@@ -2,6 +2,7 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useCart } from '../contexts/CartContext';
 import { useRouter } from 'next/router';
+import nextI18nextConfig from '../../next-i18next.config.js'; 
 
 const CheckoutPage = () => {
   const { t } = useTranslation('common');
@@ -82,7 +83,7 @@ const CheckoutPage = () => {
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'en', ['common'])),
+      ...(await serverSideTranslations(locale ?? 'en', ['common'] , nextI18nextConfig)),
     },
   };
 }

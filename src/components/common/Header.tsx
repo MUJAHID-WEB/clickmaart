@@ -171,17 +171,17 @@ const Header = () => {
                 {t("header.contact")}
               </Link>
               <Link
-                href="/product"
+                href="/products"
                 className="hover:text-indigo-600 font-medium"
               >
                 {t("header.product")}
               </Link>
-              <Link
+              {/* <Link
                 href="/store"
                 className="hover:text-indigo-600 font-medium"
               >
                 {t("header.store")}
-              </Link>
+              </Link> */}
             </nav>
           </div>
 
@@ -247,7 +247,7 @@ const Header = () => {
 
             {/* Sign In */}
             <Link
-              href="/login"
+              href="/auth/signin"
               className="flex items-center space-x-1 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md transition-colors"
             >
               <UserIcon className="h-5 w-5" />

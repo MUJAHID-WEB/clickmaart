@@ -16,5 +16,6 @@ const config = {
   saveMissing: true,
   localePath: path.resolve('./public/locales'),
 };
+export default config;
 
-module.exports = config;
+// module.exports = config;

@@ -4,12 +4,15 @@ import { StarIcon } from '@heroicons/react/24/solid';
 import Button from '@/components/common/Button';
 import { Product } from '@/types';
 import { toast } from 'react-toastify';
+import Link from 'next/link';
+// import { useTranslation } from 'next-i18next';
 
 interface ProductInfoProps {
   product: Product;
 }
 
 const ProductInfo = ({ product }: ProductInfoProps) => {
+    // const { t } = useTranslation('common');
   const { addToCart} = useCart();
   const [quantity, setQuantity] = useState(1);
 
@@ -127,6 +130,21 @@ const handleAddToCart = () => {
           >
             Add to Cart
           </Button>
+        </div>
+        <div className="text-center">
+          <p className="text-sm text-gray-600">
+            {/* {t('auth.no_account')}{' '} */}
+            Or, Become a {" "}
+            <Link href="/register/wholesaler" className="font-medium text-indigo-600 hover:text-indigo-500">
+              {/* {t('auth.sign_up_link')} */}
+              Wholesaler 
+            </Link>
+            {" "}/{" "}
+            <Link href="/register/retailer" className="font-medium text-indigo-600 hover:text-indigo-500">
+              {/* {t('auth.sign_up_link')} */}
+               Retailer
+            </Link>
+          </p>
         </div>
       </div>
     </div>

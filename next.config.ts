@@ -15,8 +15,7 @@ const nextConfig: NextConfig = {
     }
     return config;
   },
-  // Remove the experimental.serverComponentsExternalPackages
-  // and use this instead:
+
   serverExternalPackages: ['next-i18next'],
   images: {
     domains: ['example.com'],

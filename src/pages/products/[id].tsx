@@ -11,7 +11,8 @@ import { Product, Review } from '@/types';
 import { getProducts, getReviews } from '@/data/products';
 // import { TFunction } from 'next-i18next';
 import i18next from 'i18next';
-import nextI18nextConfig from 'next-i18next.config.js';
+// import nextI18nextConfig from 'next-i18next.config.js';
+import nextI18nextConfig from '../../../next-i18next.config.js'; 
 
 
 // interface ReviewsMap {
