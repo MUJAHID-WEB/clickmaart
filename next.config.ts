@@ -1,13 +1,23 @@
 import type { NextConfig } from "next";
-import { i18n } from './next-i18next.config';
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactStrictMode: true,
   i18n: {
-    ...i18n,
-    localeDetection: false, 
+    locales: ['en', 'bn'],
+    defaultLocale: 'en',
   },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        fs: false,
+        path: false,
+      };
+    }
+    return config;
+  },
+  // Remove the experimental.serverComponentsExternalPackages
+  // and use this instead:
+  serverExternalPackages: ['next-i18next'],
   images: {
     domains: ['example.com'],
   },

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, useCallback } from "react";
 
 type CartItem = {
   id: string;
@@ -16,6 +16,7 @@ type CartContextType = {
   clearCart: () => void;
   cartTotal: number;
   cartCount: number;
+  isInitialized: boolean;
 };
 
 const CartContext = createContext<CartContextType>({
@@ -26,6 +27,7 @@ const CartContext = createContext<CartContextType>({
   clearCart: () => {},
   cartTotal: 0,
   cartCount: 0,
+  isInitialized: false,
 });
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
@@ -40,93 +42,88 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     count: 0,
   });
 
+  // Memoized calculations
+  const calculateTotal = useCallback((items: CartItem[]) => 
+    items.reduce((total, item) => total + item.price * item.quantity, 0), []);
+
+  const calculateCount = useCallback((items: CartItem[]) => 
+    items.reduce((count, item) => count + item.quantity, 0), []);
+
   // Initialize cart from localStorage
   useEffect(() => {
-    const savedCart = localStorage.getItem("cart");
-    if (savedCart) {
+    const initializeCart = () => {
       try {
-        const items = JSON.parse(savedCart);
-        if (Array.isArray(items)) {
-          setCartState({
-            items,
-            total: calculateTotal(items),
-            count: calculateCount(items),
-          });
+        const savedCart = localStorage.getItem("cart");
+        if (savedCart) {
+          const parsed = JSON.parse(savedCart);
+          if (Array.isArray(parsed)) {
+            setCartState({
+              items: parsed,
+              total: calculateTotal(parsed),
+              count: calculateCount(parsed),
+            });
+          }
         }
       } catch (error) {
-        console.error('Failed to parse cart:', error);
+        console.error('Cart initialization error:', error);
         localStorage.removeItem("cart");
+      } finally {
+        setIsInitialized(true);
       }
-    }
-    setIsInitialized(true);
-  }, []);
-  
+    };
 
+    initializeCart();
+  }, [calculateTotal, calculateCount]);
+
+  // Persist cart to localStorage
   useEffect(() => {
-    console.log('Saving to localStorage:', cartState.items); 
     if (isInitialized) {
       localStorage.setItem("cart", JSON.stringify(cartState.items));
     }
   }, [cartState.items, isInitialized]);
 
-
-  const calculateTotal = (items: CartItem[]) =>
-    items.reduce((total, item) => total + item.price * item.quantity, 0);
-
-  const calculateCount = (items: CartItem[]) =>
-    items.reduce((count, item) => count + item.quantity, 0);
-
-  // const updateCart = (items: CartItem[]) => {
-  //   setCartState({
-  //     items,
-  //     total: calculateTotal(items),
-  //     count: calculateCount(items),
-  //   });
-  // };
-
-  const addToCart = (item: Omit<CartItem, "quantity">, quantity = 1) => {
-    console.log('Adding to cart:', item, quantity);
-    setCartState((prev) => {
-      const existingItem = prev.items.find((cartItem) => cartItem.id === item.id);
+  const addToCart = useCallback((item: Omit<CartItem, "quantity">, quantity = 1) => {
+    setCartState(prev => {
+      const existingIndex = prev.items.findIndex(cartItem => cartItem.id === item.id);
       let newItems;
-  
-      if (existingItem) {
-        newItems = prev.items.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + quantity }
-            : cartItem
-        );
+
+      if (existingIndex >= 0) {
+        newItems = [...prev.items];
+        newItems[existingIndex] = {
+          ...newItems[existingIndex],
+          quantity: newItems[existingIndex].quantity + quantity
+        };
       } else {
         newItems = [...prev.items, { ...item, quantity }];
       }
-  
-      console.log('New cart items:', newItems); // Debug log
+
       return {
         items: newItems,
         total: calculateTotal(newItems),
         count: calculateCount(newItems),
       };
     });
-  };
+  }, [calculateTotal, calculateCount]);
 
-  const removeFromCart = (id: string) => {
-    setCartState((prev) => {
-      const newItems = prev.items.filter((item) => item.id !== id);
+  const removeFromCart = useCallback((id: string) => {
+    setCartState(prev => {
+      const newItems = prev.items.filter(item => item.id !== id);
       return {
         items: newItems,
         total: calculateTotal(newItems),
         count: calculateCount(newItems),
       };
     });
-  };
+  }, [calculateTotal, calculateCount]);
 
-  const updateQuantity = (id: string, quantity: number) => {
+  const updateQuantity = useCallback((id: string, quantity: number) => {
     if (quantity <= 0) {
       removeFromCart(id);
       return;
     }
-    setCartState((prev) => {
-      const newItems = prev.items.map((item) =>
+    
+    setCartState(prev => {
+      const newItems = prev.items.map(item => 
         item.id === id ? { ...item, quantity } : item
       );
       return {
@@ -135,15 +132,15 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         count: calculateCount(newItems),
       };
     });
-  };
+  }, [removeFromCart, calculateTotal, calculateCount]);
 
-  const clearCart = () => {
+  const clearCart = useCallback(() => {
     setCartState({
       items: [],
       total: 0,
       count: 0,
     });
-  };
+  }, []);
 
   return (
     <CartContext.Provider
@@ -155,6 +152,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         removeFromCart,
         updateQuantity,
         clearCart,
+        isInitialized,
       }}
     >
       {children}
@@ -162,4 +160,10 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export const useCart = () => useContext(CartContext);
+export const useCart = () => {
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error('useCart must be used within a CartProvider');
+  }
+  return context;
+};

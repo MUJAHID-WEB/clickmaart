@@ -3,20 +3,28 @@ import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ShoppingCartIcon } from '@heroicons/react/24/outline';
+import { useCart } from '@/contexts/CartContext';
 
-import { useClientCart } from "@/hooks/useClientCart";
+// import { useClientCart } from "@/hooks/useClientCart";
+
+
 
 const CartPage = () => {
+  // const { t } = useTranslation('common');
   const { t } = useTranslation('common');
+  const { cartItems, cartTotal, updateQuantity, removeFromCart } = useCart();
  
-  const { cartItems, cartTotal, updateQuantity, removeFromCart } = useClientCart();
+
+  console.log('Translation for cart.summary:', t('cart.summary'));
 
   if (cartItems.length === 0) {
     return (
       <div className="text-center py-12">
         <ShoppingCartIcon className="mx-auto h-16 w-16 text-gray-400 mb-4" />
-        <p className="text-lg mb-4">Your cart is empty</p>
-        <Link href="/products">Continue Shopping</Link>
+        <p className="text-lg mb-4">
+          {t('cart.empty')}
+          </p>
+        <Link href="/products">{t('cart.continue_shopping')}</Link>
       </div>
     );
   }
@@ -115,4 +123,15 @@ const CartPage = () => {
   );
 };
 
+// export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+//   return {
+//     props: {
+//       ...(await serverSideTranslations(locale || 'en', ['common'])),
+//     },
+//   };
+// };
+
+
 export default CartPage;
+
+

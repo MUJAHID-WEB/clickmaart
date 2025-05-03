@@ -8,6 +8,7 @@ import CategoryGrid from '@/components/homepage/CategoryGrid';
 import BecomeMember from '@/components/homepage/BecomeMember';
 import AboutUs from '@/components/homepage/AboutUs';
 import HowItWorks from '@/components/homepage/HowItWorks';
+import nextI18nConfig from 'next-i18next.config';
 
 
 const HomePage = () => {
@@ -36,7 +37,7 @@ const HomePage = () => {
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...(await serverSideTranslations(locale, ['common'], nextI18nConfig)),
     },
   };
 }

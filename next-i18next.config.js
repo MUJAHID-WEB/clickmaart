@@ -1,8 +1,20 @@
-module.exports = {
-    i18n: {
-      defaultLocale: 'en',
-      locales: ['en', 'bn'],
-      localeDetection: false,
-    },
-    reloadOnPrerender: process.env.NODE_ENV === 'development',
-  }
+import path from 'path';
+
+/** @type {import('next-i18next').UserConfig} */
+const config = {
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'bn'],
+    localeDetection: false,
+  },
+  reloadOnPrerender: process.env.NODE_ENV === 'development',
+  ns: ['common'],
+  defaultNS: 'common',
+  interpolation: {
+    escapeValue: false,
+  },
+  saveMissing: true,
+  localePath: path.resolve('./public/locales'),
+};
+
+module.exports = config;

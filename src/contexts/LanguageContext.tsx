@@ -1,5 +1,7 @@
-import { createContext, useContext, useState } from 'react';
+
+import { createContext, useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import i18n from '../utils/i18n-client';
 
 type LanguageContextType = {
   language: string;
@@ -17,8 +19,16 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
 
   const changeLanguage = (lang: string) => {
     setLanguage(lang);
+    i18n.changeLanguage(lang);
     router.push(router.pathname, router.asPath, { locale: lang });
   };
+
+  useEffect(() => {
+    if (router.locale) {
+      setLanguage(router.locale);
+      i18n.changeLanguage(router.locale);
+    }
+  }, [router.locale]);
 
   return (
     <LanguageContext.Provider value={{ language, changeLanguage }}>

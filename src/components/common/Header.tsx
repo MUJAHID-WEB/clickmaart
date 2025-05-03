@@ -26,6 +26,8 @@ const Header = () => {
   const langDropdownRef = useRef<HTMLDivElement>(null);
   const joinDropdownRef = useRef<HTMLDivElement>(null);
 
+  
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (

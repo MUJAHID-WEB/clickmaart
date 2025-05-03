@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
+import {  TFunction, useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import ProductGallery from '@/components/product/ProductGallery';
 import ProductInfo from '@/components/product/ProductInfo';
@@ -9,12 +9,14 @@ import CustomerReviews from '@/components/product/CustomerReviews';
 import { GetStaticPaths, GetStaticPropsContext } from 'next';
 import { Product, Review } from '@/types';
 import { getProducts, getReviews } from '@/data/products';
-import { TFunction } from 'next-i18next';
+// import { TFunction } from 'next-i18next';
 import i18next from 'i18next';
+import nextI18nextConfig from 'next-i18next.config.js';
 
-interface ReviewsMap {
-  [key: string]: Review[];
-}
+
+// interface ReviewsMap {
+//   [key: string]: Review[];
+// }
 
 const ProductDetailPage = ({ product, productReviews }: { product: Product; productReviews: Review[] }) => {
   const { t } = useTranslation('common');
@@ -137,60 +139,53 @@ const ProductDetailPage = ({ product, productReviews }: { product: Product; prod
 };
 
 
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
+  const paths: { params: { id: string }; locale: string }[] = [];
+
+  const emptyT = ((key: string) => key) as TFunction;
+  const products = getProducts(emptyT);
+
+  for (const product of products) {
+    for (const locale of locales || ['en']) {
+      paths.push({
+        params: { id: product.id },
+        locale
+      });
+    }
+  }
+
+  return {
+    paths,
+    fallback: 'blocking'
+  };
+};
+
+
 export const getStaticProps = async (context: GetStaticPropsContext) => {
-  const { params, locale= 'en' } = context;
+  const { params, locale = 'en' } = context;
 
-  const translations = await serverSideTranslations(locale, ['common']);
-  
-  await i18next.init({
-    lng: locale,
-    resources: {
-      [locale]: {
-        common: translations._nextI18Next?.initialI18nStore?.[locale]?.common || {},
-      },
-    },
-  });
-
+  const translations = await serverSideTranslations(locale, ['common'], nextI18nextConfig);
   const t = i18next.getFixedT(locale, 'common');
+
   const products = getProducts(t);
-  
   const product = products.find(p => p.id === params?.id);
-  const productReviews = product ? (getReviews() as ReviewsMap)[product.id] || [] : [];
+  const productReviews = product ? getReviews()[product.id] || [] : [];
 
   if (!product) {
     return {
-      notFound: true,
+      notFound: true
     };
   }
-  
 
   return {
     props: {
       product,
       productReviews,
-      ...translations,
+      ...(translations || {})
     },
-    revalidate: 60, 
-  };
-
-};
-
-
-
-export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
-  const emptyT = ((key: string) => key) as unknown as TFunction;
-  const products = getProducts(emptyT);
-
-  const paths = products.flatMap(product => 
-    (locales || []).map(locale => ({
-      params: { id: product.id },
-      locale,
-    }))
-  );
-
-  return {
-    paths,
-    fallback: 'blocking', 
+    revalidate: 60
   };
 };
+
 export default ProductDetailPage;
+
