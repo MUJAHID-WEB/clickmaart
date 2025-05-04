@@ -28,13 +28,14 @@ const ProductsPage = () => {
   const categories = ['all', ...new Set(getProducts(t).map(product => product.category))];
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto py-8">
       <h1 className="text-2xl font-bold mb-8">{t('products_grid.title')}</h1>
       
-      <div className="grid md:grid-cols-4 gap-12">
+      <div className="grid lg:grid-cols-6 gap-8">
         {/* Left Sidebar - Filters */}
-        <div className="md:col-span-1 space-y-6">
+        <div className="lg:col-span-1 space-y-6">
           {/* Search Bar */}
+
           <div>
             <h2 className="font-semibold mb-2">{t('products_grid.search')}</h2>
             <input
@@ -90,11 +91,11 @@ const ProductsPage = () => {
         </div>
 
         {/* Right Side - Products Grid */}
-        <div className="md:col-span-3">
+        <div className="lg:col-span-5">
           {products.length === 0 ? (
             <p className="text-center py-8">{t('products_grid.no_products')}</p>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-2 lg:gap-4">
               {products.map(product => (
                 <ProductCard key={product.id} product={product} />
               ))}
