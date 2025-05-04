@@ -5,7 +5,7 @@ import Layout from "../components/Layout";
 import { CartProvider } from "@/contexts/CartContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { appWithTranslation } from "next-i18next";
-// import nextI18NextConfig from 'next-i18next.config';
+// import nextI18NextConfig from 'next-i18next.config.js';
 // import nextI18nConfig from 'next-i18next.config';
 import { useEffect, useState } from 'react';
 
