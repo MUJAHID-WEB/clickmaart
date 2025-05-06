@@ -18,18 +18,18 @@ const HomePage = () => {
     <div className="min-h-screen">
       <HeroCarousel />
 
-      <AboutUs/>
-      
+      <CategoryGrid />
+
       <div className="container mx-auto pt-8">
         <h2 className="text-2xl font-bold mb-6">{t('home.featured')}</h2>
         <FeaturedProducts />
       </div>
 
-      <CategoryGrid />
-
       <BecomeMember />
 
       <HowItWorks />
+
+      <AboutUs/>
     </div>
   );
 };

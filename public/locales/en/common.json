@@ -189,10 +189,22 @@
     "categories": {
       "title": "Categories",
       "available": "products available",
-      "electronics": "Electronics",
-      "clothing": "Clothing",
-      "home": "Home Goods",
-      "books": "Books"
+      "natural_food": "Natural Food",
+      "organic_food": "Organic Food",
+      "homemade_food": "Homemade Food",
+      "baby_natural_food": "Baby Natural Food",
+      "baby_care": "Baby Care Products",
+      "toys_kids": "Toys For Kids",
+      "herbal_ayurvedic": "Herbal & Ayurvedic Products",
+      "clothing_fashion": "Clothing & Fashion",
+      "beauty_personal": "Beauty & Personal Care",
+      "gift_items": "Gift Items",
+      "leather_items": "Leather Items",
+      "electric_items": "Electric Items",
+      "summer_collection": "Summer Collection",
+      "home_decor": "Home Decorate item",
+      "package_food": "Package Food",
+      "global_mart": "Global Mart"
     },
 
       "become_member": {

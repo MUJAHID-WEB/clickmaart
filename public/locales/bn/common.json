@@ -209,10 +209,22 @@
     "categories": {
       "title": "ক্যাটাগরি সমূহ",
       "available": "টি পণ্য আছে",
-      "electronics": "ইলেকট্রনিক্স",
-      "clothing": "পোশাক",
-      "home": "গৃহ সরঞ্জাম",
-      "books": "বই"
+      "natural_food": "প্রাকৃতিক খাদ্য",
+      "organic_food": "অর্গানিক খাদ্য",
+      "homemade_food": "ঘরে তৈরি খাবার",
+      "baby_natural_food": "শিশুদের প্রাকৃতিক খাবার",
+      "baby_care": "শিশু পরিচর্যা পণ্য",
+      "toys_kids": "শিশুদের খেলনা",
+      "herbal_ayurvedic": "হারবাল ও আয়ুর্বেদিক পণ্য",
+      "clothing_fashion": "পোশাক ও ফ্যাশন",
+      "beauty_personal": "সৌন্দর্য ও ব্যক্তিগত যত্ন",
+      "gift_items": "উপহার সামগ্রী",
+      "leather_items": "চামড়ার পণ্য",
+      "electric_items": "ইলেকট্রিক আইটেম",
+      "summer_collection": "গ্রীষ্মকালীন সংগ্রহ",
+      "home_decor": "বাড়ির সাজসজ্জার আইটেম",
+      "package_food": "প্যাকেটজাত খাবার",
+      "global_mart": "গ্লোবাল মার্ট"
     },
     "become_member": {
       "title": "আপনার পাইকারি ও খুচরা ব্যবসা সহজভাবে বাড়ান",
