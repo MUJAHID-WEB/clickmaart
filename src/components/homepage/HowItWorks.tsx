@@ -34,38 +34,38 @@ const HowItWorks = () => {
       ],
       link: "/wholesaler",
     },
-    {
-      id: 2,
-      number: "03",
-      title: t("how_it_works.tab3.title"),
-      image: "/images/homepage/customer.webp",
-      description: t("how_it_works.tab3.description"),
-      points: [
-        t("how_it_works.tab3.point1"),
-        t("how_it_works.tab3.point2"),
-        t("how_it_works.tab3.point3"),
-      ],
-      link: "/customer",
-    },
-    {
-      id: 3,
-      number: "04",
-      title: t("how_it_works.tab4.title"),
-      image: "/images/homepage/delivery.jpeg",
-      description: t("how_it_works.tab4.description"),
-      points: [
-        t("how_it_works.tab4.point1"),
-        t("how_it_works.tab4.point2"),
-        t("how_it_works.tab4.point3"),
-      ],
-      link: "/delivery",
-    },
+    // {
+    //   id: 2,
+    //   number: "03",
+    //   title: t("how_it_works.tab3.title"),
+    //   image: "/images/homepage/customer.webp",
+    //   description: t("how_it_works.tab3.description"),
+    //   points: [
+    //     t("how_it_works.tab3.point1"),
+    //     t("how_it_works.tab3.point2"),
+    //     t("how_it_works.tab3.point3"),
+    //   ],
+    //   link: "/customer",
+    // },
+    // {
+    //   id: 3,
+    //   number: "04",
+    //   title: t("how_it_works.tab4.title"),
+    //   image: "/images/homepage/delivery.jpeg",
+    //   description: t("how_it_works.tab4.description"),
+    //   points: [
+    //     t("how_it_works.tab4.point1"),
+    //     t("how_it_works.tab4.point2"),
+    //     t("how_it_works.tab4.point3"),
+    //   ],
+    //   link: "/delivery",
+    // },
   ];
 
   return (
     <section className="py-16 px-4 ">
       <div className="container mx-auto">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 ">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             {t("how_it_works.title")}
           </h2>
@@ -81,7 +81,7 @@ const HowItWorks = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex flex-col items-start p-4 rounded-lg transition-all duration-300 ${
+                className={`flex flex-col items-center p-4 rounded-lg transition-all w-2xs duration-300 ${
                   activeTab === tab.id
                     ? "bg-indigo-700 text-white shadow-lg"
                     : "bg-white text-gray-700 hover:bg-gray-100 shadow-md"

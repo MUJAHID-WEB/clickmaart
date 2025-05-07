@@ -93,7 +93,7 @@ const AboutUs = () => {
 
                 <a
                   href="#"
-                  className="inline-flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-medium"
+                  className="inline-flex items-center gap-3 px-6 py-4 bg-indigo-600 from-primary to-secondary text-white rounded-lg font-medium"
                 >
                   {t("home.about.learn_more")}
                   <svg
@@ -163,7 +163,7 @@ const AboutUs = () => {
                         </h5>
                       </div>
 
-                      <div className="relative h-8 w-full">
+                      <div className="relative h-8 w-[300px]">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="80"

@@ -283,36 +283,22 @@
     },
 
    "how_it_works": {
-      "title": "How ClickMaart Works",
+      "title": "How ClickMart Works",
       "subtitle": "Discover our simple process for retailers, wholesalers, and customers",
-      "learn_more": "Join Now",
+      "learn_more": "Learn More",
       "tab1": {
         "title": "For Retailers",
-        "description": "Join our platform to expand your business and reach more customers",
-        "point1": "Easy registration process",
-        "point2": "Access to wholesale prices",
-        "point3": "Manage your inventory online"
+        "description": "Join our platform to grow your business and reach more customers",
+        "point1": "A great opportunity to earn from the comfort of your home!",
+        "point2": "Create your own independence — earn easily by retailing our products.",
+        "point3": "No big investment or experience required. Turn your free time into income. Join now and build your dream future from home! Earn BDT 15,000 to 20,000 from home."
       },
       "tab2": {
         "title": "For Wholesalers",
-        "description": "Connect with retailers and grow your distribution network",
-        "point1": "Showcase your products",
-        "point2": "Manage orders efficiently",
-        "point3": "Expand your market reach"
-      },
-      "tab3": {
-        "title": "For Customers",
-        "description": "Shop from local retailers with convenience and confidence",
-        "point1": "Find products easily",
-        "point2": "Secure payment options",
-        "point3": "Fast delivery services"
-      },
-      "tab4": {
-        "title": "Delivery Process",
-        "description": "Our efficient delivery system ensures your products arrive on time",
-        "point1": "Real-time tracking",
-        "point2": "Professional delivery partners",
-        "point3": "Flexible delivery options"
+        "description": "Join our platform to grow your business.",
+        "point1": "Your products, our platform — the simple solution for wholesale sales!",
+        "point2": "We take care of selling your products!",
+        "point3": "Contact us today and start wholesaling from home."
       }
     },
     "contact": {
