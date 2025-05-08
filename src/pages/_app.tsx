@@ -20,14 +20,16 @@ export function MyApp({ Component, pageProps }: AppProps) {
   if (!ready) return null; 
 
   return (
-    
-    <CartProvider>
-      <LanguageProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-      </LanguageProvider>
-    </CartProvider>
+    <div className="pb-16 md:pb-0">
+        <CartProvider>
+          <LanguageProvider>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+          </LanguageProvider>
+        </CartProvider>
+    </div>
+  
   );
 }
 

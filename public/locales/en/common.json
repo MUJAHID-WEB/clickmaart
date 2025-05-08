@@ -9,7 +9,9 @@
       "product": "My Product",
       "store": "My Store",
       "search_placeholder": "Search products...",
-      "sign_in": "Sign In"
+      "sign_in": "Your Account",
+      "cart": "Cart"
+
     },
     "home": {
       "featured": "Featured Products",
@@ -28,7 +30,7 @@
       "about": {
         "subtitle": "About",
         "title": "We Are ClickMaart",
-        "description": "ClickMaart is Bangladesh's largest dropshipping and reselling platform. Without any kind of capital or investment, you can run an online business from home with products from numerous categories through us.",
+        "description": "ClickMaart is Bangladesh's largest reselling platform. Without any kind of capital or investment, you can run an online business from home with products from numerous categories through us.",
         "list_title": "We help you planning your journey",
         "list_item": "Lorem Ipsum is simply dummy text",
         "learn_more": "Learn More",

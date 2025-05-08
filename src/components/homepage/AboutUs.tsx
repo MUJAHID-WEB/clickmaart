@@ -68,24 +68,24 @@ const AboutUs = () => {
                   <div className="flex flex-col md:flex-row gap-8">
                     <ul className="space-y-2 list-disc pl-5">
                       <li className="text-lg text-gray-700">
-                        {t("about.list_item")}
+                        {t("home.about.list_item")}
                       </li>
                       <li className="text-lg text-gray-700">
-                        {t("about.list_item")}
+                        {t("home.about.list_item")}
                       </li>
                       <li className="text-lg text-gray-700">
-                        {t("about.list_item")}
+                        {t("home.about.list_item")}
                       </li>
                     </ul>
                     <ul className="space-y-2 list-disc pl-5">
                       <li className="text-lg text-gray-700">
-                        {t("about.list_item")}
+                        {t("home.about.list_item")}
                       </li>
                       <li className="text-lg text-gray-700">
-                        {t("about.list_item")}
+                        {t("home.about.list_item")}
                       </li>
                       <li className="text-lg text-gray-700">
-                        {t("about.list_item")}
+                        {t("home.about.list_item")}
                       </li>
                     </ul>
                   </div>
