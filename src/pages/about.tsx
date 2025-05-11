@@ -2,6 +2,7 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
 import nextI18nextConfig from '../../next-i18next.config';
+import AboutUs from '@/components/homepage/AboutUs';
 
 const AboutPage = () => {
   const { t } = useTranslation('common');
@@ -16,6 +17,7 @@ const AboutPage = () => {
       <div className="container mx-auto px-4 py-12">
         <h1 className="text-3xl font-bold mb-8 text-center">{t('about.title')}</h1>
         
+        <AboutUs/>
         {/* About Us Section */}
         <section className="mb-16">
           <div className="bg-white rounded-lg shadow p-6 md:p-8 mb-8">

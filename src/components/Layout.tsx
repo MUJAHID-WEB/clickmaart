@@ -20,7 +20,7 @@ const Layout = ({ children, title = 'ClickMaart' }: LayoutProps) => {
       </Head>
       <div className="min-h-screen flex flex-col" dir="ltr">
         <Header />
-        <main className="flex-grow container mx-auto px-4 py-8">
+        <main className="flex-grow container mx-auto px-4 pb-8">
           {children}
         </main>
         <Footer />

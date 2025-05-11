@@ -19,9 +19,7 @@ const Header = () => {
 
   const [showLangDropdown, setShowLangDropdown] = useState(false);
   const [showJoinDropdown, setShowJoinDropdown] = useState(false);
-  const [showSearch, setShowSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const searchRef = useRef<HTMLInputElement>(null);
   const langDropdownRef = useRef<HTMLDivElement>(null);
   const joinDropdownRef = useRef<HTMLDivElement>(null);
 
@@ -47,18 +45,14 @@ const Header = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  useEffect(() => {
-    if (showSearch && searchRef.current) {
-      searchRef.current.focus();
-    }
-  }, [showSearch]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Searching for:", searchQuery);
-    setShowSearch(false);
-    setSearchQuery("");
+    if (searchQuery.trim()) {
+      window.location.href = `/products?search=${encodeURIComponent(searchQuery)}`;
+    }
   };
+  
 
   return (
     <>
@@ -74,9 +68,8 @@ const Header = () => {
           <div className="flex items-center space-x-4">
             {/* Language Switcher */}
             <div className="relative">
-              
               <button
-                onClick={() => changeLanguage(language === 'en' ? 'bn' : 'en')}
+                onClick={() => changeLanguage(language === "en" ? "bn" : "en")}
                 className="flex items-center text-sm hover:text-indigo-600"
               >
                 {language === "en" ? "English" : "বাংলা"}
@@ -171,103 +164,18 @@ const Header = () => {
           </div>
         )}
       </div>
-      <header className="hidden md:block bg-white shadow-md sticky">
+      <header className="hidden md:block bg-[#1E40AF] text-white sticky">
         {/* Top Header */}
-        <div className="bg-gray-100 py-2">
-          <div className="container mx-auto px-4 flex justify-end items-center space-x-8">
-            {/* Language Selector */}
-            {/* <div className="relative">
-            <button
-              onClick={() => changeLanguage(language === 'en' ? 'bn' : 'en')}
-              className="flex items-center text-sm hover:text-indigo-600"
-            >
-              {language === "en" ? "English" : "বাংলা"}
-            </button>
-          </div> */}
-            <div className="relative" ref={langDropdownRef}>
-              <button
-                onClick={() => setShowLangDropdown(!showLangDropdown)}
-                className="flex items-center text-sm hover:text-indigo-600"
-              >
-                {language === "en" ? "English" : "বাংলা"}
-                <ChevronDownIcon className="ml-1 h-4 w-4" />
-              </button>
-
-              {showLangDropdown && (
-                <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-10">
-                  <button
-                    onClick={() => {
-                      changeLanguage("en");
-                      setShowLangDropdown(false);
-                    }}
-                    className={`block w-full text-left px-4 py-2 text-sm ${
-                      language === "en"
-                        ? "bg-indigo-100 text-indigo-700"
-                        : "hover:bg-gray-100"
-                    }`}
-                  >
-                    English
-                  </button>
-                  <button
-                    onClick={() => {
-                      changeLanguage("bn");
-                      setShowLangDropdown(false);
-                    }}
-                    className={`block w-full text-left px-4 py-2 text-sm ${
-                      language === "bn"
-                        ? "bg-indigo-100 text-indigo-700"
-                        : "hover:bg-gray-100"
-                    }`}
-                  >
-                    বাংলা
-                  </button>
-                </div>
-              )}
-            </div>
-
-            {/* Join Us Dropdown */}
-            <div className="relative" ref={joinDropdownRef}>
-              <button
-                onClick={() => setShowJoinDropdown(!showJoinDropdown)}
-                className="flex items-center text-sm hover:text-indigo-600"
-              >
-                {t("header.join_us")}
-                <ChevronDownIcon className="ml-1 h-4 w-4" />
-              </button>
-
-              {showJoinDropdown && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
-                  <Link
-                    href="/register/retailer"
-                    className="block px-4 py-2 text-sm hover:bg-gray-100"
-                    onClick={() => setShowJoinDropdown(false)}
-                  >
-                    {t("header.become_retailer")}
-                  </Link>
-                  <Link
-                    href="/register/wholesaler"
-                    className="block px-4 py-2 text-sm hover:bg-gray-100"
-                    onClick={() => setShowJoinDropdown(false)}
-                  >
-                    {t("header.become_wholesaler")}
-                  </Link>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Header */}
         <div className="container mx-auto px-4 py-3">
           <div className="flex justify-between items-center">
             {/* Left Side - Logo and Menu */}
             <div className="flex items-center space-x-8">
-              <Link href="/" className="text-2xl font-bold text-indigo-600">
+              <Link href="/" className="text-2xl font-bold text-white">
                 Click Maart
               </Link>
 
               <nav className="hidden md:flex items-center space-x-6">
-                <Link
+                {/* <Link
                   href="/"
                   className="hover:text-indigo-600 font-medium"
                 >
@@ -284,10 +192,10 @@ const Header = () => {
                   className="hover:text-indigo-600 font-medium"
                 >
                   {t("header.contact")}
-                </Link>
+                </Link> */}
                 <Link
                   href="/products"
-                  className="hover:text-indigo-600 font-medium"
+                  className="hover:text-gray-200 font-medium"
                 >
                   {t("header.product")}
                 </Link>
@@ -300,45 +208,31 @@ const Header = () => {
               </nav>
             </div>
 
+            {/* Search */}
+            <div className="relative w-2/4 mx-5">
+              <form onSubmit={handleSearch} className="relative">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder={t("header.search_placeholder")}
+                  className="w-full bg-white rounded-2xl py-2 pl-3 pr-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 text-black"
+                />
+                <button
+                  type="submit"
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-indigo-600"
+                >
+                  <SearchIcon className="h-5 w-5" />
+                </button>
+              </form>
+            </div>
+
             {/* Right Side - Search, Cart, Sign In */}
             <div className="flex items-center space-x-6">
-              {/* Search */}
-              <div className="relative">
-                {showSearch ? (
-                  <form
-                    onSubmit={handleSearch}
-                    className="absolute right-0 top-0 bg-white p-1 shadow-md rounded"
-                  >
-                    <input
-                      ref={searchRef}
-                      type="text"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder={t("header.search_placeholder")}
-                      className="border rounded px-3 py-1 w-64 focus:outline-none focus:ring-1 focus:ring-indigo-500"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowSearch(false)}
-                      className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                    >
-                      ✕
-                    </button>
-                  </form>
-                ) : (
-                  <button
-                    onClick={() => setShowSearch(true)}
-                    className="p-1 hover:text-indigo-600"
-                  >
-                    <SearchIcon className="h-6 w-6" />
-                  </button>
-                )}
-              </div>
-
               {/* Cart */}
               <Link
                 href="/cart"
-                className="relative p-1 hover:text-indigo-600"
+                className="relative p-1 hover:text-gray-200"
                 onClick={(e) => {
                   if (cartCount === 0) {
                     e.preventDefault();
@@ -367,6 +261,88 @@ const Header = () => {
                 <UserIcon className="h-5 w-5" />
                 <span>{t("header.sign_in")}</span>
               </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Header */}
+        <div className="bg-white text-black ">
+          <div className="container mx-auto px-4 flex justify-between items-center space-x-8 ">
+            <div className="bg-white p-3 w-full md:max-w-[183px] lg:max-w-[209px] xl:max-w-[227px] 2xl:max-w-[241px]">
+              <h2 className="text-2xl font-bold ">{t("categories.title")}</h2>
+            </div>
+
+            <div className="px-4 flex justify-end items-center space-x-8">
+              <div className="relative" ref={langDropdownRef}>
+                <button
+                  onClick={() => setShowLangDropdown(!showLangDropdown)}
+                  className="flex items-center text-sm hover:text-indigo-600"
+                >
+                  {language === "en" ? "English" : "বাংলা"}
+                  <ChevronDownIcon className="ml-1 h-4 w-4" />
+                </button>
+
+                {showLangDropdown && (
+                  <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-10">
+                    <button
+                      onClick={() => {
+                        changeLanguage("en");
+                        setShowLangDropdown(false);
+                      }}
+                      className={`block w-full text-left px-4 py-2 text-sm ${
+                        language === "en"
+                          ? "bg-indigo-100 text-indigo-700"
+                          : "hover:bg-gray-100"
+                      }`}
+                    >
+                      English
+                    </button>
+                    <button
+                      onClick={() => {
+                        changeLanguage("bn");
+                        setShowLangDropdown(false);
+                      }}
+                      className={`block w-full text-left px-4 py-2 text-sm ${
+                        language === "bn"
+                          ? "bg-indigo-100 text-indigo-700"
+                          : "hover:bg-gray-100"
+                      }`}
+                    >
+                      বাংলা
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* Join Us Dropdown */}
+              <div className="relative" ref={joinDropdownRef}>
+                <button
+                  onClick={() => setShowJoinDropdown(!showJoinDropdown)}
+                  className="flex items-center text-sm hover:text-indigo-600"
+                >
+                  {t("header.join_us")}
+                  <ChevronDownIcon className="ml-1 h-4 w-4" />
+                </button>
+
+                {showJoinDropdown && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
+                    <Link
+                      href="/register/retailer"
+                      className="block px-4 py-2 text-sm hover:bg-gray-100"
+                      onClick={() => setShowJoinDropdown(false)}
+                    >
+                      {t("header.become_retailer")}
+                    </Link>
+                    <Link
+                      href="/register/wholesaler"
+                      className="block px-4 py-2 text-sm hover:bg-gray-100"
+                      onClick={() => setShowJoinDropdown(false)}
+                    >
+                      {t("header.become_wholesaler")}
+                    </Link>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

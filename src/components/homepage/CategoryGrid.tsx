@@ -106,16 +106,16 @@ const CategoryGrid = () => {
 
   return (
     <>
-      <h2 className="text-2xl font-bold mt-12">{t("categories.title")}</h2>
-      <div className="grid grid-cols-4 sm:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-4 mt-6 mb-12">
+      <h2 className="text-2xl font-bold mt-12 md:mt-0 md:hidden">{t("categories.title")}</h2>
+      <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-1 items-start gap-4 mt-6 md:mt-0 mb-12 md:mb-0">
         {categories.map((category) => (
           <Link
             href={`/products/${category.id}`}
             key={category.id}
             className="group relative block overflow-hidden"
           >
-            <div className="flex flex-col items-center justify-center gap-2 text-center">
-              <div className="relative">
+            <div className="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start gap-2 text-center">
+              <div className="relative md:w-6 md:h-6">
                 <Image
                   src={category.image}
                   alt={category.name}
@@ -126,7 +126,7 @@ const CategoryGrid = () => {
                 />
               </div>
 
-              <h3 className="text-[#1F2937] text-sm sm:text-lg font-medium sm:font-semibold">
+              <h3 className="text-[#1F2937] text-left text-sm sm:text-lg md:text-base font-medium sm:font-semibold md:font-normal">
                 {category.name}
               </h3>
             </div>
