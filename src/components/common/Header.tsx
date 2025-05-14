@@ -12,8 +12,10 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useCart } from "@/contexts/CartContext";
 import CategoryGrid from "../homepage/CategoryGrid";
+import { useRouter } from "next/router";
 
 const Header = () => {
+  const router = useRouter();
   const { t } = useTranslation("common");
   const { language, changeLanguage } = useLanguage();
   const { cartCount, cartItems } = useCart();
@@ -24,8 +26,11 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const langDropdownRef = useRef<HTMLDivElement>(null);
   const joinDropdownRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -57,19 +62,86 @@ const Header = () => {
   };
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [isHomePage, setIsHomePage] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+// Check if current page is home page
+useEffect(() => {
+  setIsHomePage(router.pathname === "/");
+}, [router.pathname]);
+
+// Check if window is desktop size
+useEffect(() => {
+  const handleResize = () => {
+    setIsDesktop(window.innerWidth >= 1024);
   };
+  
+  if (typeof window !== 'undefined') {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }
+}, []);
+
+// Handle scroll events
+useEffect(() => {
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY;
+    setIsScrolled(scrollPosition > 200);
+    
+    // Close dropdown when scrolling down on desktop home page
+    if (isDesktop && isHomePage && scrollPosition > 200 && isOpen) {
+      setIsOpen(false);
+    }
+  };
+
+  if (typeof window !== 'undefined') {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }
+}, [isDesktop, isHomePage, isOpen]);
+
+// Close dropdowns when clicking outside
+useEffect(() => {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (langDropdownRef.current && !langDropdownRef.current.contains(event.target as Node)) {
+      setShowLangDropdown(false);
+    }
+    if (joinDropdownRef.current && !joinDropdownRef.current.contains(event.target as Node)) {
+      setShowJoinDropdown(false);
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+  return () => document.removeEventListener("mousedown", handleClickOutside);
+}, []);
+
+const toggleDropdown = () => {
+  setIsOpen(!isOpen);
+};
+
+// const handleSearch = (e: React.FormEvent) => {
+//   e.preventDefault();
+//   if (searchQuery.trim()) {
+//     router.push(`/products?search=${encodeURIComponent(searchQuery)}`);
+//   }
+// };
+
+// Determine if dropdown should be shown
+const shouldShowDropdown = isOpen || (isDesktop && isHomePage && !isScrolled);
 
   return (
     <>
-      <header className=" bg-[#F3F4F6] text-black sticky">
+      <header 
+        ref={headerRef}
+        className={`bg-[#F3F4F6] text-black sticky top-0 z-40 ${isScrolled ? 'shadow-md' : ''}`}
+      >
         {/* Top Header */}
         <div className="container mx-auto px-4 py-3">
           <div className="flex justify-between items-center">
             {/* Left Side - Logo and Menu */}
-            <div className="flex items-center space-x-8">
+            <div className="flex items-center space-x-2 md:space-x-8">
               <Link href="/" className="text-2xl font-bold text-white">
                 <Image
                   src="/images/homepage/logo.png"
@@ -101,7 +173,7 @@ const Header = () => {
                 </Link> */}
                 <Link
                   href="/products"
-                  className="hover:text-gray-200 font-medium"
+                  className="hover:text-indigo-800 font-medium"
                 >
                   {t("header.product")}
                 </Link>
@@ -115,7 +187,7 @@ const Header = () => {
             </div>
 
             {/* Search */}
-            <div className="relative w-2/4 mx-5">
+            <div className="relative w-2/3 md:w-2/4 mx-5">
               <form onSubmit={handleSearch} className="relative">
                 <input
                   type="text"
@@ -133,12 +205,12 @@ const Header = () => {
               </form>
             </div>
 
-            {/* Right Side - Search, Cart, Sign In */}
-            <div className="flex items-center space-x-6">
+            {/* Right Side - Cart, Sign In */}
+            <div className="flex items-center space-x-4">
               {/* Cart */}
               <Link
                 href="/cart"
-                className="relative p-1 hover:text-gray-200"
+                className="relative p-1 hover:text-indigo-800 hidden md:block"
                 onClick={(e) => {
                   if (cartCount === 0) {
                     e.preventDefault();
@@ -162,10 +234,10 @@ const Header = () => {
               {/* Sign In */}
               <Link
                 href="/auth/signin"
-                className="flex items-center space-x-1 md:bg-indigo-600 md:hover:bg-indigo-700 text-black md:text-white px-4 py-2 rounded-md transition-colors"
+                className="hidden md:flex items-center space-x-1 lg:bg-indigo-600 lg:hover:bg-indigo-700 text-black lg:text-white lg:p-2 rounded-md transition-colors"
               >
                 <UserIcon className="h-5 w-5" />
-                <span className="hidden md:block">{t("header.sign_in")}</span>
+                <span className="hidden lg:block">{t("header.sign_in")}</span>
               </Link>
 
               <button
@@ -210,8 +282,14 @@ const Header = () => {
         {/* Bottom Header */}
         <div className="bg-white text-black ">
           <div className="container mx-auto px-4 flex justify-between items-center space-x-8 ">
-            <div className="bg-white p-3 relative flex gap-3 justify-center">
-              <svg
+
+            <div className="bg-white py-3 md:p-3 relative flex gap-3 justify-center">
+              
+              <div
+                className="gap-1 text-base md:text-xl font-bold cursor-pointer flex justify-between items-center"
+                onClick={toggleDropdown}
+              >
+                <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -225,13 +303,9 @@ const Header = () => {
                   d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                 />
               </svg>
-              <h2
-                className="text-xl font-bold cursor-pointer flex justify-between items-center"
-                onClick={toggleDropdown}
-              >
-                {t("categories.title")}
-                <span className="ml-2">
-                  {isOpen ? (
+                <h2 className="">{t("categories.title")}</h2>
+               
+                  {shouldShowDropdown ? (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-5 w-5"
@@ -258,12 +332,12 @@ const Header = () => {
                       />
                     </svg>
                   )}
-                </span>
-              </h2>
+             
+              </div>
 
               <div
-                className={`absolute left-0 mt-10 lg:w-[200px] xl:w-[230px] 2xl:w-[280px]  h-[382px] rounded-b-lg p-3 overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-600 scrollbar-track-gray-100 bg-white transition-all duration-300 ease-in-out ${
-                  isOpen
+                className={`absolute left-0 mt-10 w-[250px] lg:w-[200px] xl:w-[230px] 2xl:w-[280px]  h-[382px] rounded-b-lg p-3 overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-600 scrollbar-track-gray-100 bg-white transition-all duration-300 ease-in-out ${
+                  shouldShowDropdown
                     ? "opacity-100 max-h-[500px]"
                     : "opacity-0 max-h-0 overflow-hidden"
                 }`}
@@ -273,7 +347,7 @@ const Header = () => {
             </div>
 
             {/* Language Switcher */}
-            <div className="px-4 flex justify-end items-center space-x-8">
+            <div className="md:px-4 flex justify-end items-center md:space-x-8">
               <div className="hidden md:block relative" ref={langDropdownRef}>
                 <button
                   onClick={() => setShowLangDropdown(!showLangDropdown)}
@@ -320,14 +394,14 @@ const Header = () => {
                   onClick={() =>
                     changeLanguage(language === "en" ? "bn" : "en")
                   }
-                  className="flex items-center text-sm hover:text-indigo-600"
+                  className="flex items-end text-sm hover:text-indigo-600"
                 >
                   {language === "en" ? "English" : "বাংলা"}
                 </button>
               </div>
 
               {/* Join Us Dropdown */}
-              <div className="relative" ref={joinDropdownRef}>
+              <div className="relative hidden md:block" ref={joinDropdownRef}>
                 <button
                   onClick={() => setShowJoinDropdown(!showJoinDropdown)}
                   className="flex items-center text-sm hover:text-indigo-600"
@@ -362,7 +436,7 @@ const Header = () => {
 
       {/* Mobile Menu (shown when hamburger is clicked) */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white px-4 pb-4">
+        <div className="md:hidden bg-white px-4 pb-4 absolute right-0 top-16 z-50">
           <nav className="flex flex-col space-y-3">
             {/* <Link
                 href="/"
@@ -382,12 +456,12 @@ const Header = () => {
             >
               {t("header.contact")}
             </Link>
-            <Link
+            {/* <Link
               href="/products"
               className="hover:text-indigo-600 font-medium py-2 border-b"
             >
               {t("header.product")}
-            </Link>
+            </Link> */}
 
             <Link
               href="/register/retailer"
