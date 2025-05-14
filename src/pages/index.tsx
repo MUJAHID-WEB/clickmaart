@@ -3,7 +3,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import HeroCarousel from "@/components/homepage/HeroCarousel";
 import FeaturedProducts from "@/components/homepage/FeaturedProducts";
-import CategoryGrid from "@/components/homepage/CategoryGrid";
+// import CategoryGrid from "@/components/homepage/CategoryGrid";
 // import BecomeMember from '@/components/homepage/BecomeMember';
 import HowItWorks from "@/components/homepage/HowItWorks";
 import nextI18nConfig from "next-i18next.config";
@@ -17,9 +17,9 @@ const HomePage = () => {
   return (
     <div className="min-h-screen">
       <HeroCarousel />
-      <div className="md:hidden">
+      {/* <div className="md:hidden">
         <CategoryGrid />
-      </div>
+      </div> */}
 
       <div className="container mx-auto pt-8">
         <h2 className="text-2xl font-bold mb-6">{t("home.featured")}</h2>

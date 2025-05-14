@@ -11,6 +11,7 @@ import {
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useCart } from "@/contexts/CartContext";
+import CategoryGrid from "../homepage/CategoryGrid";
 
 const Header = () => {
   const { t } = useTranslation("common");
@@ -46,126 +47,24 @@ const Header = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      window.location.href = `/products?search=${encodeURIComponent(searchQuery)}`;
+      window.location.href = `/products?search=${encodeURIComponent(
+        searchQuery
+      )}`;
     }
   };
-  
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <>
-      {/* Top Bar - Mobile/Tablet */}
-      <div className="md:hidden bg-white shadow-md">
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          {/* Logo */}
-          <Link href="/" className="text-xl font-bold text-indigo-600">
-            Click Maart
-          </Link>
-
-          {/* Right Side (Language + Hamburger) */}
-          <div className="flex items-center space-x-4">
-            {/* Language Switcher */}
-            <div className="relative">
-              <button
-                onClick={() => changeLanguage(language === "en" ? "bn" : "en")}
-                className="flex items-center text-sm hover:text-indigo-600"
-              >
-                {language === "en" ? "English" : "বাংলা"}
-              </button>
-            </div>
-
-            {/* Hamburger Menu */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-1 hover:text-indigo-600 focus:outline-none"
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            >
-              {isMenuOpen ? (
-                // Close (X) icon
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="h-6 w-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              ) : (
-                // Hamburger icon
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="h-6 w-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                  />
-                </svg>
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu (shown when hamburger is clicked) */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white px-4 pb-4">
-            <nav className="flex flex-col space-y-3">
-              {/* <Link
-                href="/"
-                className="hover:text-indigo-600 font-medium py-2 border-b"
-              >
-                {t("header.home")}
-              </Link> */}
-              <Link
-                href="/about"
-                className="hover:text-indigo-600 font-medium py-2 border-b"
-              >
-                {t("header.about")}
-              </Link>
-              <Link
-                href="/contact"
-                className="hover:text-indigo-600 font-medium py-2 border-b"
-              >
-                {t("header.contact")}
-              </Link>
-              <Link
-                href="/products"
-                className="hover:text-indigo-600 font-medium py-2 border-b"
-              >
-                {t("header.product")}
-              </Link>
-
-              <Link
-                href="/register/retailer"
-                className="hover:text-indigo-600 font-medium py-2 border-b"
-              >
-                {t("header.become_retailer")}
-              </Link>
-              <Link
-                href="/register/wholesaler"
-                className="hover:text-indigo-600 font-medium py-2"
-              >
-                {t("header.become_wholesaler")}
-              </Link>
-            </nav>
-          </div>
-        )}
-      </div>
-      <header className="hidden md:block bg-[#F3F4F6] text-black sticky">
+      <header className=" bg-[#F3F4F6] text-black sticky">
         {/* Top Header */}
         <div className="container mx-auto px-4 py-3">
           <div className="flex justify-between items-center">
@@ -263,11 +162,47 @@ const Header = () => {
               {/* Sign In */}
               <Link
                 href="/auth/signin"
-                className="flex items-center space-x-1 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md transition-colors"
+                className="flex items-center space-x-1 md:bg-indigo-600 md:hover:bg-indigo-700 text-black md:text-white px-4 py-2 rounded-md transition-colors"
               >
                 <UserIcon className="h-5 w-5" />
-                <span>{t("header.sign_in")}</span>
+                <span className="hidden md:block">{t("header.sign_in")}</span>
               </Link>
+
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="md:hidden p-1 hover:text-indigo-600 focus:outline-none"
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              >
+                {isMenuOpen ? (
+                  // Close (X) icon
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                ) : (
+                  // Hamburger icon
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    className="h-6 w-6"
+                  >
+                    <circle cx="12" cy="5" r="1.5" />
+                    <circle cx="12" cy="12" r="1.5" />
+                    <circle cx="12" cy="19" r="1.5" />
+                  </svg>
+                )}
+              </button>
             </div>
           </div>
         </div>
@@ -275,12 +210,71 @@ const Header = () => {
         {/* Bottom Header */}
         <div className="bg-white text-black ">
           <div className="container mx-auto px-4 flex justify-between items-center space-x-8 ">
-            <div className="bg-white p-3 w-full md:max-w-[183px] lg:max-w-[209px] xl:max-w-[227px] 2xl:max-w-[241px]">
-              <h2 className="text-2xl font-bold ">{t("categories.title")}</h2>
+            <div className="bg-white p-3 relative flex gap-3 justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="h-6 w-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+              <h2
+                className="text-xl font-bold cursor-pointer flex justify-between items-center"
+                onClick={toggleDropdown}
+              >
+                {t("categories.title")}
+                <span className="ml-2">
+                  {isOpen ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  )}
+                </span>
+              </h2>
+
+              <div
+                className={`absolute left-0 mt-10 lg:w-[200px] xl:w-[230px] 2xl:w-[280px]  h-[382px] rounded-b-lg p-3 overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-600 scrollbar-track-gray-100 bg-white transition-all duration-300 ease-in-out ${
+                  isOpen
+                    ? "opacity-100 max-h-[500px]"
+                    : "opacity-0 max-h-0 overflow-hidden"
+                }`}
+              >
+                <CategoryGrid />
+              </div>
             </div>
 
+            {/* Language Switcher */}
             <div className="px-4 flex justify-end items-center space-x-8">
-              <div className="relative" ref={langDropdownRef}>
+              <div className="hidden md:block relative" ref={langDropdownRef}>
                 <button
                   onClick={() => setShowLangDropdown(!showLangDropdown)}
                   className="flex items-center text-sm hover:text-indigo-600"
@@ -321,6 +315,17 @@ const Header = () => {
                 )}
               </div>
 
+              <div className="md:hidden relative">
+                <button
+                  onClick={() =>
+                    changeLanguage(language === "en" ? "bn" : "en")
+                  }
+                  className="flex items-center text-sm hover:text-indigo-600"
+                >
+                  {language === "en" ? "English" : "বাংলা"}
+                </button>
+              </div>
+
               {/* Join Us Dropdown */}
               <div className="relative" ref={joinDropdownRef}>
                 <button
@@ -354,6 +359,51 @@ const Header = () => {
           </div>
         </div>
       </header>
+
+      {/* Mobile Menu (shown when hamburger is clicked) */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-white px-4 pb-4">
+          <nav className="flex flex-col space-y-3">
+            {/* <Link
+                href="/"
+                className="hover:text-indigo-600 font-medium py-2 border-b"
+              >
+                {t("header.home")}
+              </Link> */}
+            <Link
+              href="/about"
+              className="hover:text-indigo-600 font-medium py-2 border-b"
+            >
+              {t("header.about")}
+            </Link>
+            <Link
+              href="/contact"
+              className="hover:text-indigo-600 font-medium py-2 border-b"
+            >
+              {t("header.contact")}
+            </Link>
+            <Link
+              href="/products"
+              className="hover:text-indigo-600 font-medium py-2 border-b"
+            >
+              {t("header.product")}
+            </Link>
+
+            <Link
+              href="/register/retailer"
+              className="hover:text-indigo-600 font-medium py-2 border-b"
+            >
+              {t("header.become_retailer")}
+            </Link>
+            <Link
+              href="/register/wholesaler"
+              className="hover:text-indigo-600 font-medium py-2"
+            >
+              {t("header.become_wholesaler")}
+            </Link>
+          </nav>
+        </div>
+      )}
 
       {/* Bottom Navigation - Mobile/Tablet */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg z-50">

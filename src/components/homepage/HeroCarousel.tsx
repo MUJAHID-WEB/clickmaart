@@ -67,10 +67,12 @@ const HeroCarousel = () => {
 
   return (
     <div className="flex gap-4">
-      <div className="hidden lg:block h-[382px] bg-transparent rounded-b-lg p-3 overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-600 scrollbar-track-gray-100 flex-[1] min-w-[20%]">
+      <div className="hidden lg:block  flex-[1] min-w-[20%]">
         {/* <CategoryGrid /> */}
       </div>
-      <div className="relative h-[180px] sm:h-[200px] md:h-[350px] mt-8 overflow-hidden rounded-xl  flex-[2] min-w-[60%]">
+
+      {/* slider */}
+      <div className="relative z-[-1] h-[180px] sm:h-[200px] md:h-[350px] mt-8 overflow-hidden rounded-xl  flex-[2] min-w-[60%]">
         <AnimatePresence custom={direction} initial={false}>
           <motion.div
             key={slides[currentSlide].id}
@@ -140,10 +142,10 @@ const HeroCarousel = () => {
         </div>
       </div>
 
-
+          {/* download APP */}
         <div className="hidden bg-white md:flex flex-col items-center gap-4 mt-8 p-4 rounded-lg flex-[1] min-w-[15%]">
 
-          <h5 className="text-black text-base font-bold">Download the App</h5>
+          <h5 className="text-black text-base font-bold text-center">Download the App</h5>
           <Image
             src="/images/homepage/qr.jpg"
             alt="Google Play"
