@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import {
   ChevronDownIcon,
@@ -164,14 +165,20 @@ const Header = () => {
           </div>
         )}
       </div>
-      <header className="hidden md:block bg-[#1E40AF] text-white sticky">
+      <header className="hidden md:block bg-[#F3F4F6] text-black sticky">
         {/* Top Header */}
         <div className="container mx-auto px-4 py-3">
           <div className="flex justify-between items-center">
             {/* Left Side - Logo and Menu */}
             <div className="flex items-center space-x-8">
               <Link href="/" className="text-2xl font-bold text-white">
-                Click Maart
+                <Image
+                  src="/images/homepage/logo.png"
+                  alt="Google Play"
+                  width={50}
+                  height={50}
+                  className=""
+                />
               </Link>
 
               <nav className="hidden md:flex items-center space-x-6">

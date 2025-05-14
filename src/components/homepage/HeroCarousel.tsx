@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
-import CategoryGrid from "./CategoryGrid";
+// import CategoryGrid from "./CategoryGrid";
 import Link from "next/link";
 
 const HeroCarousel = () => {
@@ -13,7 +13,7 @@ const HeroCarousel = () => {
   const slides = [
     {
       id: 1,
-      image: "/images/homepage/shopping_hero1.webp",
+      image: "/images/homepage/shopping_hero.jpeg",
       title: t("home.hero.title1"),
       subtitle: t("home.hero.subtitle1"),
       ctaText: t("home.shop_now"),
@@ -21,7 +21,7 @@ const HeroCarousel = () => {
     },
     {
       id: 2,
-      image: "/images/homepage/wholesaler_hero3.avif",
+      image: "/images/homepage/wholesaler_hero.jpeg",
       title: t("home.hero.title2"),
       subtitle: t("home.hero.subtitle2"),
       ctaText: t("home.register_now"),
@@ -29,7 +29,7 @@ const HeroCarousel = () => {
     },
     {
       id: 3,
-      image: "/images/homepage/retailer_hero.jpg",
+      image: "/images/homepage/retailer_hero.jpeg",
       title: t("home.hero.title3"),
       subtitle: t("home.hero.subtitle3"),
       ctaText: t("home.register_now"),
@@ -67,10 +67,10 @@ const HeroCarousel = () => {
 
   return (
     <div className="flex gap-4">
-      <div className="hidden md:block h-[382px] bg-white rounded-b-lg shadow-md p-3 overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-600 scrollbar-track-gray-100">
-        <CategoryGrid />
+      <div className="hidden lg:block h-[382px] bg-transparent rounded-b-lg p-3 overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-600 scrollbar-track-gray-100 flex-[1] min-w-[20%]">
+        {/* <CategoryGrid /> */}
       </div>
-      <div className="relative w-3/4 h-[350px] mt-8 overflow-hidden rounded-xl">
+      <div className="relative h-[180px] sm:h-[200px] md:h-[350px] mt-8 overflow-hidden rounded-xl  flex-[2] min-w-[60%]">
         <AnimatePresence custom={direction} initial={false}>
           <motion.div
             key={slides[currentSlide].id}
@@ -89,11 +89,11 @@ const HeroCarousel = () => {
               src={slides[currentSlide].image}
               alt={slides[currentSlide].title}
               fill
-              className="object-cover"
+              className="object-fill"
               sizes="(max-width: 768px) 100vw, 50vw"
               priority={currentSlide === 0} //
             />
-            <div className="absolute inset-0 bg-[rgba(0,0,0,0.70)] flex items-center">
+            {/* <div className="absolute inset-0 bg-[rgba(0,0,0,0.70)] flex items-center">
               <div className="container mx-auto px-4 text-white">
                 <motion.h1
                   initial={{ y: -20 }}
@@ -122,7 +122,7 @@ const HeroCarousel = () => {
                   {slides[currentSlide].ctaText}
                 </motion.a>
               </div>
-            </div>
+            </div> */}
           </motion.div>
         </AnimatePresence>
 
@@ -141,7 +141,7 @@ const HeroCarousel = () => {
       </div>
 
 
-        <div className="hidden bg-white md:flex flex-col items-center gap-4 mt-8 p-4 rounded-lg w-[200px]">
+        <div className="hidden bg-white md:flex flex-col items-center gap-4 mt-8 p-4 rounded-lg flex-[1] min-w-[15%]">
 
           <h5 className="text-black text-base font-bold">Download the App</h5>
           <Image
