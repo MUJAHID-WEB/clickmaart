@@ -138,7 +138,7 @@ const shouldShowDropdown = isOpen || (isDesktop && isHomePage && !isScrolled);
         className={`bg-[#F3F4F6] text-black sticky top-0 z-40 ${isScrolled ? 'shadow-md' : ''}`}
       >
         {/* Top Header */}
-        <div className="container mx-auto px-4 py-3">
+        <div className="container mx-auto px-4 py-1">
           <div className="flex justify-between items-center">
             {/* Left Side - Logo and Menu */}
             <div className="flex items-center space-x-2 md:space-x-8">
@@ -146,8 +146,8 @@ const shouldShowDropdown = isOpen || (isDesktop && isHomePage && !isScrolled);
                 <Image
                   src="/images/homepage/logo.png"
                   alt="Google Play"
-                  width={50}
-                  height={50}
+                  width={80}
+                  height={80}
                   className=""
                 />
               </Link>
