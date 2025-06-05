@@ -66,74 +66,68 @@ const Header = () => {
   const [isHomePage, setIsHomePage] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-// Check if current page is home page
-useEffect(() => {
-  setIsHomePage(router.pathname === "/");
-}, [router.pathname]);
+  // home page
+  useEffect(() => {
+    setIsHomePage(router.pathname === "/");
+  }, [router.pathname]);
 
-// Check if window is desktop size
-useEffect(() => {
-  const handleResize = () => {
-    setIsDesktop(window.innerWidth >= 1024);
-  };
-  
-  if (typeof window !== 'undefined') {
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }
-}, []);
+  // desktop size
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
 
-// Handle scroll events
-useEffect(() => {
-  const handleScroll = () => {
-    const scrollPosition = window.scrollY;
-    setIsScrolled(scrollPosition > 200);
-    
-    // Close dropdown when scrolling down on desktop home page
-    if (isDesktop && isHomePage && scrollPosition > 200 && isOpen) {
-      setIsOpen(false);
+    if (typeof window !== 'undefined') {
+      handleResize();
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
     }
+  }, []);
+
+  // Handle scroll 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 200);
+
+      // Close dropdown 
+      if (isDesktop && isHomePage && scrollPosition > 200 && isOpen) {
+        setIsOpen(false);
+      }
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
+  }, [isDesktop, isHomePage, isOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (langDropdownRef.current && !langDropdownRef.current.contains(event.target as Node)) {
+        setShowLangDropdown(false);
+      }
+      if (joinDropdownRef.current && !joinDropdownRef.current.contains(event.target as Node)) {
+        setShowJoinDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
   };
 
-  if (typeof window !== 'undefined') {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }
-}, [isDesktop, isHomePage, isOpen]);
 
-// Close dropdowns when clicking outside
-useEffect(() => {
-  const handleClickOutside = (event: MouseEvent) => {
-    if (langDropdownRef.current && !langDropdownRef.current.contains(event.target as Node)) {
-      setShowLangDropdown(false);
-    }
-    if (joinDropdownRef.current && !joinDropdownRef.current.contains(event.target as Node)) {
-      setShowJoinDropdown(false);
-    }
-  };
 
-  document.addEventListener("mousedown", handleClickOutside);
-  return () => document.removeEventListener("mousedown", handleClickOutside);
-}, []);
-
-const toggleDropdown = () => {
-  setIsOpen(!isOpen);
-};
-
-// const handleSearch = (e: React.FormEvent) => {
-//   e.preventDefault();
-//   if (searchQuery.trim()) {
-//     router.push(`/products?search=${encodeURIComponent(searchQuery)}`);
-//   }
-// };
-
-// Determine if dropdown should be shown
-const shouldShowDropdown = isOpen || (isDesktop && isHomePage && !isScrolled);
+  // Determine if dropdown should be shown
+  const shouldShowDropdown = isOpen || (isDesktop && isHomePage && !isScrolled);
 
   return (
     <>
-      <header 
+      <header
         ref={headerRef}
         className={`bg-[#F3F4F6] text-black sticky top-0 z-40 ${isScrolled ? 'shadow-md' : ''}`}
       >
@@ -153,36 +147,14 @@ const shouldShowDropdown = isOpen || (isDesktop && isHomePage && !isScrolled);
               </Link>
 
               <nav className="hidden md:flex items-center space-x-6">
-                {/* <Link
-                  href="/"
-                  className="hover:text-indigo-600 font-medium"
-                >
-                  {t("header.home")}
-                </Link>
-                <Link
-                  href="/about"
-                  className="hover:text-indigo-600 font-medium"
-                >
-                  {t("header.about")}
-                </Link>
-                <Link
-                  href="/contact"
-                  className="hover:text-indigo-600 font-medium"
-                >
-                  {t("header.contact")}
-                </Link> */}
+
                 <Link
                   href="/products"
                   className="hover:text-indigo-800 font-medium"
                 >
                   {t("header.product")}
                 </Link>
-                {/* <Link
-                href="/store"
-                className="hover:text-indigo-600 font-medium"
-              >
-                {t("header.store")}
-              </Link> */}
+
               </nav>
             </div>
 
@@ -284,63 +256,62 @@ const shouldShowDropdown = isOpen || (isDesktop && isHomePage && !isScrolled);
           <div className="container mx-auto px-4 flex justify-between items-center space-x-8 ">
 
             <div className="bg-white py-3 md:p-3 relative flex gap-3 justify-center">
-              
+
               <div
                 className="gap-1 text-base md:text-xl font-bold cursor-pointer flex justify-between items-center"
                 onClick={toggleDropdown}
               >
                 <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              </svg>
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </svg>
                 <h2 className="">{t("categories.title")}</h2>
-               
-                  {shouldShowDropdown ? (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  ) : (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  )}
-             
+
+                {shouldShowDropdown ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                )}
+
               </div>
 
               <div
-                className={`absolute left-0 mt-10 w-[250px] lg:w-[200px] xl:w-[230px] 2xl:w-[280px]  h-[382px] rounded-b-lg p-3 overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-600 scrollbar-track-gray-100 bg-white transition-all duration-300 ease-in-out ${
-                  shouldShowDropdown
-                    ? "opacity-100 max-h-[500px]"
-                    : "opacity-0 max-h-0 overflow-hidden"
-                }`}
+                className={`absolute left-0 mt-10 w-[250px] lg:w-[200px] xl:w-[230px] 2xl:w-[280px]  h-[382px] rounded-b-lg p-3 overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-600 scrollbar-track-gray-100 bg-white transition-all duration-300 ease-in-out ${shouldShowDropdown
+                  ? "opacity-100 max-h-[500px]"
+                  : "opacity-0 max-h-0 overflow-hidden"
+                  }`}
               >
                 <CategoryGrid />
               </div>
@@ -353,7 +324,7 @@ const shouldShowDropdown = isOpen || (isDesktop && isHomePage && !isScrolled);
                   onClick={() => setShowLangDropdown(!showLangDropdown)}
                   className="flex items-center text-sm hover:text-indigo-600"
                 >
-                  {language === "en" ? "English" : "বাংলা"}
+                  {language === "bn" ? "বাংলা" : "English"}
                   <ChevronDownIcon className="ml-1 h-4 w-4" />
                 </button>
 
@@ -361,29 +332,27 @@ const shouldShowDropdown = isOpen || (isDesktop && isHomePage && !isScrolled);
                   <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-10">
                     <button
                       onClick={() => {
-                        changeLanguage("en");
-                        setShowLangDropdown(false);
-                      }}
-                      className={`block w-full text-left px-4 py-2 text-sm ${
-                        language === "en"
-                          ? "bg-indigo-100 text-indigo-700"
-                          : "hover:bg-gray-100"
-                      }`}
-                    >
-                      English
-                    </button>
-                    <button
-                      onClick={() => {
                         changeLanguage("bn");
                         setShowLangDropdown(false);
                       }}
-                      className={`block w-full text-left px-4 py-2 text-sm ${
-                        language === "bn"
-                          ? "bg-indigo-100 text-indigo-700"
-                          : "hover:bg-gray-100"
-                      }`}
+                      className={`block w-full text-right px-4 py-2 text-sm ${language === "bn"
+                        ? "bg-indigo-100 text-indigo-700"
+                        : "hover:bg-gray-100"
+                        }`}
                     >
                       বাংলা
+                    </button>
+                    <button
+                      onClick={() => {
+                        changeLanguage("en");
+                        setShowLangDropdown(false);
+                      }}
+                      className={`block w-full text-right px-4 py-2 text-sm ${language === "en"
+                        ? "bg-indigo-100 text-indigo-700"
+                        : "hover:bg-gray-100"
+                        }`}
+                    >
+                      English
                     </button>
                   </div>
                 )}
@@ -391,12 +360,10 @@ const shouldShowDropdown = isOpen || (isDesktop && isHomePage && !isScrolled);
 
               <div className="md:hidden relative">
                 <button
-                  onClick={() =>
-                    changeLanguage(language === "en" ? "bn" : "en")
-                  }
+                  onClick={() => changeLanguage(language === "bn" ? "en" : "bn")}
                   className="flex items-end text-sm hover:text-indigo-600"
                 >
-                  {language === "en" ? "English" : "বাংলা"}
+                  {language === "bn" ? "বাংলা" : "English"} {/* Changed order here */}
                 </button>
               </div>
 
@@ -438,12 +405,7 @@ const shouldShowDropdown = isOpen || (isDesktop && isHomePage && !isScrolled);
       {isMenuOpen && (
         <div className="md:hidden bg-white px-4 pb-4 absolute right-0 top-16 z-50">
           <nav className="flex flex-col space-y-3">
-            {/* <Link
-                href="/"
-                className="hover:text-indigo-600 font-medium py-2 border-b"
-              >
-                {t("header.home")}
-              </Link> */}
+
             <Link
               href="/about"
               className="hover:text-indigo-600 font-medium py-2 border-b"
@@ -456,12 +418,7 @@ const shouldShowDropdown = isOpen || (isDesktop && isHomePage && !isScrolled);
             >
               {t("header.contact")}
             </Link>
-            {/* <Link
-              href="/products"
-              className="hover:text-indigo-600 font-medium py-2 border-b"
-            >
-              {t("header.product")}
-            </Link> */}
+
 
             <Link
               href="/register/retailer"

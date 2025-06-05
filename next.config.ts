@@ -3,8 +3,9 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   i18n: {
-    locales: ['en', 'bn'],
-    defaultLocale: 'en',
+    locales: ['bn', 'en'],
+    defaultLocale: 'bn',
+    localeDetection: false,
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
@@ -18,8 +19,14 @@ const nextConfig: NextConfig = {
 
   serverExternalPackages: ['next-i18next'],
   images: {
-    domains: ['example.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'example.com',
+      },
+    ],
   },
+  
 };
 
 export default nextConfig;

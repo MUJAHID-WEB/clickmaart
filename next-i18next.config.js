@@ -3,8 +3,8 @@ import path from 'path';
 /** @type {import('next-i18next').UserConfig} */
 const config = {
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'bn'],
+    locales: ['bn', 'en'],
+    defaultLocale: 'bn',
     localeDetection: false,
   },
   reloadOnPrerender: process.env.NODE_ENV === 'development',

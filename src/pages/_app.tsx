@@ -1,5 +1,4 @@
 import { AppProps } from "next/app";
-// import { useRouter } from "next/router";
 import "../styles/globals.css";
 import Layout from "../components/Layout";
 import { CartProvider } from "@/contexts/CartContext";
@@ -8,9 +7,14 @@ import { appWithTranslation } from "next-i18next";
 // import nextI18NextConfig from 'next-i18next.config.js';
 // import nextI18nConfig from 'next-i18next.config';
 import { useEffect, useState } from 'react';
+import { useRouter } from "next/router";
 
 export function MyApp({ Component, pageProps }: AppProps) {
-  // const { locale } = useRouter();
+  const router = useRouter();
+  useEffect(() => {
+    console.log('Current locale:', router.locale);
+  }, [router.locale]);
+  
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
