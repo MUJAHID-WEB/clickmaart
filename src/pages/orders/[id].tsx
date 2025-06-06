@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-
+import Image from 'next/image';
 import nextI18nextConfig from '../../../next-i18next.config';
 
 const OrderDetailsPage = () => {
@@ -37,7 +37,16 @@ const OrderDetailsPage = () => {
             {order.items.map(item => (
               <div key={item.id} className="flex items-center border-b py-4">
                 <div className="w-20 h-20 bg-gray-100 rounded mr-4 overflow-hidden">
-                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                  {/* <img src={item.image} alt={item.name} className="w-full h-full object-cover" /> */}
+
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    width={500}  
+                    height={300}
+                    priority={true} 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="flex-1">
                   <h3 className="font-medium">{item.name}</h3>
@@ -70,9 +79,8 @@ const OrderDetailsPage = () => {
               </div>
               <div>
                 <h3 className="font-medium text-gray-600">{t('order.order_status')}</h3>
-                <p className={`font-semibold ${
-                  order.status === 'Delivered' ? 'text-green-600' : 'text-yellow-600'
-                }`}>
+                <p className={`font-semibold ${order.status === 'Delivered' ? 'text-green-600' : 'text-yellow-600'
+                  }`}>
                   {order.status}
                 </p>
               </div>

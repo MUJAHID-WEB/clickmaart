@@ -54,7 +54,7 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
         router.replace(correctPath, undefined, { locale: router.locale, shallow: true });
       }
     }
-  }, [router.locale]);
+  }, [router, router.locale, language]);
 
   return (
     <LanguageContext.Provider value={{ language, changeLanguage }}>

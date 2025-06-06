@@ -1,5 +1,8 @@
 import { initReactI18next } from 'react-i18next';
 import i18n from 'i18next';
+import enResources from '../../public/locales/en/common.json';
+import bnResources from '../../public/locales/bn/common.json';
+
 
 i18n
   .use(initReactI18next)
@@ -9,8 +12,8 @@ i18n
     ns: ['common'],
     defaultNS: 'common',
     resources: {
-      en: { common: require('../../public/locales/en/common.json') },
-      bn: { common: require('../../public/locales/bn/common.json') }
+      en: { common: enResources },
+      bn: { common: bnResources }
     },
     interpolation: {
       escapeValue: false
