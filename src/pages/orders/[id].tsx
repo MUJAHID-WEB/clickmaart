@@ -42,9 +42,9 @@ const OrderDetailsPage = () => {
                   <Image
                     src={item.image}
                     alt={item.name}
-                    width={500}  
-                    height={300}
-                    priority={true} 
+                    width={80}  
+                    height={80}
+                    priority={false} 
                     className="w-full h-full object-cover"
                   />
                 </div>

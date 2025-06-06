@@ -15,13 +15,13 @@ const ProductsPage = () => {
   const products = getProducts(t).filter(product => {
     // Filter by search term
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
-    
+
     // Filter by category
     const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
-    
+
     // Filter by price range
     const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
-    
+
     return matchesSearch && matchesCategory && matchesPrice;
   });
 
@@ -30,7 +30,7 @@ const ProductsPage = () => {
   return (
     <div className="container mx-auto py-8">
       <h1 className="text-2xl font-bold mb-8">{t('products_grid.title')}</h1>
-      
+
       <div className="grid lg:grid-cols-6 gap-8">
         {/* Left Sidebar - Filters */}
         <div className="lg:col-span-1 space-y-6">
@@ -50,9 +50,9 @@ const ProductsPage = () => {
           {/* Category Filter */}
           <div>
             <h2 className="font-semibold mb-2">{t('products_grid.categories')}</h2>
-            <div className="space-y-2">
+            <div className="lg:space-y-2 flex lg:flex-col gap-4 items-center lg:items-start whitespace-nowrap py-4 flex-wrap">
               {categories.map(category => (
-                <div key={category} className="flex items-center">
+                <div key={category} className="flex items-center flex-shrink-0">
                   <input
                     type="radio"
                     id={category}
