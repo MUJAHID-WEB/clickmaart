@@ -1,0 +1,14 @@
+{
+    "dashboard": {
+      "title": "Dashboard Overview",
+      "totalSales": "Total Sales",
+      "totalOrders": "Total Orders",
+      "activeWholesalers": "Active Wholesalers",
+      "activeRetailers": "Active Retailers"
+    },
+    "products": {
+      "pending": "Pending Approval",
+      "approved": "Approved Products",
+      "rejected": "Rejected Products"
+    }
+  }

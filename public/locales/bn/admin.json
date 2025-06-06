@@ -1,0 +1,14 @@
+{
+    "dashboard": {
+      "title": "ড্যাশবোর্ড ওভারভিউ",
+      "totalSales": "মোট বিক্রয়",
+      "totalOrders": "মোট অর্ডার",
+      "activeWholesalers": "সক্রিয় পাইকারি বিক্রেতা",
+      "activeRetailers": "সক্রিয় খুচরা বিক্রেতা"
+    },
+    "products": {
+      "pending": "অনুমোদনের অপেক্ষায়",
+      "approved": "অনুমোদিত পণ্য",
+      "rejected": "প্রত্যাখ্যাত পণ্য"
+    }
+  }

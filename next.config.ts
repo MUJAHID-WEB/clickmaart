@@ -30,6 +30,20 @@ const nextConfig: NextConfig = {
   // images: {
   //   domains: ['example.com'], 
   // },
+
+  async rewrites() {
+    return [
+      {
+        source: '/admin/:path*',
+        destination: '/admin/:path*',
+      },
+      // Fallback for admin 404
+      {
+        source: '/admin/_error',
+        destination: '/admin/404',
+      },
+    ]
+  },
   
 };
 
